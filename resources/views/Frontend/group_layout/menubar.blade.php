@@ -2,21 +2,21 @@
     <div class="main-menu main-menu-padding-1 main-menu-lh-3 main-menu-hm4 main-menu-center">
         <nav>
             <ul>
-                @foreach ($cateLimit as $ke => $cateParent)
+                @foreach($menuLimit as $menuParent)
                     <li>
-                        <a href="#">{{$cateParent->cate_name}}</a>
-                        @if ($cateParent->categoryChild->count())
+                        <a href="">{{$menuParent->menu_name}}</a>
+                        @if ($menuParent->menuChild->count())
                             <ul class="sub-menu-style">
-                                @foreach ($cateParent->categoryChild as $cate)
+                                @foreach ($menuParent->menuChild as $menus)
                                     <li>
-                                        <a href="about-us.html">{{$cate->cate_name}} </a>
+                                        <a href="{{$menus->menu_name}}">{{$menus->menu_name}} </a>
                                     </li>
                                 @endforeach
                             </ul>
                         @endif
                     </li>
                 @endforeach
-                <li><a href="">CONTACT </a></li>
+                <li><a href="{{route('contact')}}">CONTACT </a></li>
             </ul>
         </nav>
     </div>

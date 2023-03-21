@@ -1,5 +1,7 @@
 <?php
     use App\Http\Controllers\FrontendController;
+    use App\Http\Controllers\admin\CategoryController;
+
     /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +21,7 @@
 
     Route::get('/Giỏ_hàng',[FrontendController::class,'cart'])->name('cart');
 
+    Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
+
+    Route::get('/category/{slug}/{id}', [CategoryController::class,'index']);
 ?>

@@ -79,7 +79,7 @@
                                         <a href="index-2.html"><img src="{{asset('Frontend/assets/images/logo/logo.png')}}" alt="logo"></a>
                                     </div>
                                 </div>
-                                @include('Frontend.menubar')
+                                @include('Frontend.group_layout.menubar')
                                 <div class="col-xl-3 col-lg-3">
                                     <div class="header-action header-action-flex header-action-mrg-right">
                                         <div class="same-style-2 header-search-1">

@@ -185,8 +185,8 @@
         </div>
     </div>
 </div>
-@include('Frontend.slide')
-@include('Frontend.product')
+@include('Frontend.group_layout.slide')
+@include('Frontend.group_layout.product')
 <div class="banner-area section-padding-2 pb-85">
     <div class="container-fluid">
         <div class="row">
@@ -223,8 +223,8 @@
         </div>
     </div>
 </div>
-@include('Frontend.recomment')
-@include('Frontend.tag')
+@include('Frontend.group_layout.recomment')
+@include('Frontend.group_layout.tag')
 <div class="blog-area pt-115 pb-75">
     <div class="container">
         <div class="section-title-tab-wrap mb-55">

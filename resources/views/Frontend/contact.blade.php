@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('content')
-<div class="breadcrumb-area bg-gray" style="margin-top: 148.6px">
+<div class="breadcrumb-area bg-gray" >
     <div class="container">
         <div class="breadcrumb-content text-center">
             <ul>
