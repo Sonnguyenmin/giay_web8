@@ -1,0 +1,92 @@
+<?php
+
+namespace App\Http\Controllers\User;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Service\Product\ProductServiceInterface;
+use App\Service\Category\CategoryServiceInterface;
+use App\Service\Brand\BrandServiceInterface;
+use App\Models\Slide;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Brand;
+use App\Models\Menu;
+use App\Models\ProImage;
+use App\Models\ProAttr;
+use App\Models\Attrbute;
+
+class ShopController extends Controller
+{
+    private $productService;
+
+    public function __construct(ProductServiceInterface $productService,
+                                CategoryServiceInterface $CategoryService,
+                                BrandServiceInterface $BrandService)
+    {
+        $this->productService = $productService;
+        $this->CategoryService = $CategoryService;
+        $this->BrandService = $BrandService;
+    }
+
+    public function shop(Request $request) {
+        $perPage = $request->show ?? 12;
+        $sortBy =  $request->sort_by ?? 'latest';
+        $search = $request->search ?? '';
+        $products = Product::where('pro_name', 'like' , '%' . $search . '%');
+        switch ($sortBy) {
+            case 'latest';
+                $products = $products->orderBy('id');
+                break;
+            case 'name-ascending';
+                $products = $products->orderBy('pro_name');
+                break;
+            case 'name-descending';
+                $products = $products->orderByDesc('pro_name');
+                break;
+            case 'price-ascending';
+                $products = $products->orderBy('pro_price');
+                break;
+            case 'price-descending';
+                $products = $products->orderByDesc('pro_price');
+                break;
+            default;
+                $products = $products->orderBy('id');
+        }
+        $products = $products->paginate($perPage);
+        $products->appends(['sort_by' => $sortBy, 'show'=> $perPage]);
+        return view('Frontend.user_Page.shop', compact('products'));
+    }
+
+    public function show($id, $productId) {
+        $brands = $this->BrandService->all();
+        $categories = $this->CategoryService->all();
+        $products = $this->productService->find($productId);
+        $relatedProducts = $this->productService->getRelatedProduct($products);
+        return view('Frontend.user_Page.detailProduct', compact('products', 'relatedProducts','brands', 'categories'));
+    }
+
+    public function index(Request $request){
+        $brands = $this->BrandService->all();
+        $categories = $this->CategoryService->all();
+        $products = $this->productService->getProductOnIndex($request);
+        return view('Frontend.user_Page.shop', compact('products', 'categories','brands'));
+    }
+
+    public function category( $cateName, Request $request)
+    {
+        $brands = $this->BrandService->all();
+        $categories = $this->CategoryService->all();
+        $products = $this->productService->getProByCate($cateName, $request);
+        return view('Frontend.user_Page.shop', compact('products', 'categories', 'brands'));
+    }
+
+    public function brand( $brandName, Request $request)
+    {
+        $brands = $this->BrandService->all();
+        $categories = $this->CategoryService->all();
+        $products = $this->productService->getProByBrand($brandName, $request);
+        return view('Frontend.user_Page.shop', compact('products', 'categories', 'brands'));
+    }
+}

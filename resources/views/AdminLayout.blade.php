@@ -232,7 +232,7 @@
                                 <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="database"></i><span>Dữ liệu Permission</span> </a>
                                 <ul class="sidebar-submenu">
                                     <li>
-                                        <a href="{{route('permission.index')}}">Danh sách quyền cho phép</a>
+                                        <a href="{{route('permission.index')}}">Danh sách quyền</a>
                                     </li>
                                 </ul>
                             </li>

@@ -1,6 +1,8 @@
 <?php
     use App\Http\Controllers\FrontendController;
-    use App\Http\Controllers\admin\CategoryController;
+    use App\Http\Controllers\User\ShopController;
+    use App\Http\Controllers\User\CartController;
+
 
     /*
 |--------------------------------------------------------------------------
@@ -12,16 +14,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
     Route::get('/',[FrontendController::class,'index']);
 
-    Route::get('/Trang_chủ',[FrontendController::class,'index'])->name('home');
+    Route::get('/',[FrontendController::class,'index'])->name('home');
 
-    Route::get('/Liên_hệ',[FrontendController::class,'contact'])->name('contact');
+    Route::prefix('shop')->group(function(){
+        Route::get('/',[ShopController::class,'index'])->name('shop');
 
-    Route::get('/Giỏ_hàng',[FrontendController::class,'cart'])->name('cart');
+        Route::get('category/{cateName}',[ShopController::class,'category']);
+        Route::get('brand/{brandName}',[ShopController::class,'brand']);
+    });
 
-    Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
+    Route::get('/product-details/{slug}/{id}',[ShopController::class,'show'])->name('details.product');
 
-    Route::get('/category/{slug}/{id}', [CategoryController::class,'index']);
+    Route::prefix('cart')->group(function(){
+        Route::get('add/{id}',[CartController::class, 'add'])->name('addCart');
+        Route::get('/',[CartController::class, 'index']);
+
+    });
 ?>

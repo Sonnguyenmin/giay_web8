@@ -45,7 +45,10 @@
                         <th>Hình ảnh</th>
                         <th>Nội dung</th>
                         <th>Slug</th>
-                        <th>Trạng thái</th>
+                        <th>Qty</th>
+                        <th>Sku</th>
+                        <th>TgT</th>
+                        <th>Tag</th>
                         <th>Thời gian</th>
                         <th style="width: 120px;">Hành động</th>
                     </tr>
@@ -67,13 +70,16 @@
                             </td>
                             <td style="text-align: center; width: 300px">{{$proItem->pro_content}} </td>
                             <td style="text-align: center">{{$proItem->slug}}</td>
-                            <td style="text-align: center;width: 120px;">
+                            <td style="text-align: center">{{$proItem->qty}}</td>
+                            <td style="text-align: center">{{$proItem->Sku}}</td>
+                             <td style="text-align: center;width: 120px;">
                                 @if($proItem->pro_status == 0)
-                                    <span style="font-size: 13px" class="badge badge-light-danger">Ẩn đi</span>
+                                    <span style="font-size: 13px" class="badge badge-light-danger">0</span>
                                 @else
-                                    <span style="font-size: 13px" class="badge badge-light-success">Hiện lên</span>
+                                    <span style="font-size: 13px" class="badge badge-light-success">1</span>
                                 @endif
                             </td>
+                            <td style="text-align: center">{{$proItem->tag}}</td>
                             <td style="text-align: center">{{$proItem->created_at->format(" d-m-Y")}}</td>
                             <td>
                             <ul class="action" style="justify-content: center;">

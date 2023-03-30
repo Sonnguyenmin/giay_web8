@@ -11,6 +11,10 @@ class Attribute extends Model
     public $timestamp = true;
     protected $table = 'tbl_attr';
     protected $fillable = [
-        'attr_name','attr_value'
+        'attr_name','attr_value',
     ];
+
+    public function proAttrs(){
+        return $this->hasMany(proAttr::class,'id_product');
+    }
 }

@@ -100,19 +100,19 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate(
-            [
-                'menu_name' => 'required|unique:tbl_menu|max:255',
-            ],
-            [
-                'menu_name.unique' => 'Tên menu đã có, xin điền tên khác',
-                'menu_name.required' => 'Tên menu là bắt buộc',
-                'menu_name.max' => 'Tên menu không vượt quá 255 kí tự',
-                'slug.unique' => 'Slug menu đã có, xin điền Slug khác',
-                'slug.required' => 'Slug menu là bắt buộc',
-                'slug.max' => 'Slug menu không vượt quá 255 kí tự',
-            ]
-        );
+        // $data = $request->validate(
+        //     [
+        //         'menu_name' => 'required|unique:tbl_menu|max:255',
+        //     ],
+        //     [
+        //         'menu_name.unique' => 'Tên menu đã có, xin điền tên khác',
+        //         'menu_name.required' => 'Tên menu là bắt buộc',
+        //         'menu_name.max' => 'Tên menu không vượt quá 255 kí tự',
+        //         'slug.unique' => 'Slug menu đã có, xin điền Slug khác',
+        //         'slug.required' => 'Slug menu là bắt buộc',
+        //         'slug.max' => 'Slug menu không vượt quá 255 kí tự',
+        //     ]
+        // );
         $this->menu->find($id)->update([
             'menu_name' => $request->menu_name,
             'parent_id'=> $request->parent_id,

@@ -34,6 +34,15 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3 row">
+                                    <label class="col-sm-3 col-form-label">Tiêu đề Slide</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control"
+                                            type="text"
+                                            name="slide_title"
+                                            value="{{$slide->slide_title}}">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Tên Slide</label>
                                         <div class="col-sm-9">
                                             <input class="form-control"

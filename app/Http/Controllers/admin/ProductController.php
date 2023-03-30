@@ -14,8 +14,6 @@ use App\Models\ProAttr;
 use App\Traits\StorageImageTraits;
 use App\Models\Brand;
 use App\Models\ProImage;
-use App\Models\Tag;
-use App\Models\ProTag;
 
 class ProductController extends Controller
 {
@@ -25,19 +23,15 @@ class ProductController extends Controller
     private $product;
     private $proAttr;
     private $proImage;
-    private $tag;
-    private $proTag;
 
 
-    public function __construct(Category $category, Brand $brand, Product $product,ProAttr $proAttr, ProImage $proImage, Tag $tag , ProTag $proTag)
+    public function __construct(Category $category, Brand $brand, Product $product,ProAttr $proAttr, ProImage $proImage)
     {
         $this->category = $category;
         $this->brand = $brand;
         $this->product = $product;
         $this->proAttr = $proAttr;
         $this->proImage = $proImage;
-        $this->tag = $tag;
-        $this->proTag = $proTag;
 
     }
     /**
@@ -58,20 +52,18 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-
-        $htmlOption = $this->getCategory($parentId ="");
-        $color = Attribute::where('attr_name','color')->get();
         $size = Attribute::where('attr_name','size')->get();
-        $brand = Brand::orderBy('id')->get();
-        return view('Backend.pages.Product.create_pro', compact('htmlOption','color','size', 'brand'));
+        $brand = Brand::orderBy('id', 'DESC')->get();
+        $category = Category::orderBy('id', 'DESC')->get();
+        return view('Backend.pages.Product.create_pro', compact('category', 'size', 'brand'));
     }
 
-    public function getCategory($parentId){//function dùng chung
-        $data = $this->category->all();
-        $recusive = new Recursive($data);
-        $htmlOption = $recusive->categoryRecusive($parentId);
-        return $htmlOption;
-    }
+    // public function getCategory($parentId){//function dùng chung
+    //     $data = $this->category->all();
+    //     $recusive = new Recursive($data);
+    //     $htmlOption = $recusive->categoryRecusive($parentId);
+    //     return $htmlOption;
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -108,8 +100,15 @@ class ProductController extends Controller
                 'pro_name'=>$request->pro_name,
                 'pro_price'=>$request->pro_price,
                 'pro_content'=>$request->pro_content,
+                'pro_desc' => $request->pro_desc,
                 'slug'=>$request->slug,
                 'pro_status'=>$request->pro_status,
+                'discount'=>$request->discount,
+                'Sku'=>$request->Sku,
+                'weight'=>$request->weight,
+                'qty'=>$request->qty,
+                'featured'=>$request->featured,
+                'pro_tag'=>$request->pro_tag,
             ];
             $dataUploadImage = $this->storageTraitUpload($request,'feature_image','product');
             if(!empty($dataUploadImage)){
@@ -134,18 +133,18 @@ class ProductController extends Controller
                         ]);
                 }
             }
-           //Insert tag for product
-           $tagIds = [];
-           if(!empty($request->tags)){
-               foreach($request->tags as $tagItem){
-                   $tagInstance = $this->tag->firstOrCreate([
-                       'name' => $tagItem,
-                   ]);
-                   $tagIds[] = $tagInstance->id;
-               }
-            }
-            $product->tags()->attach($tagIds);
-            
+        //    //Insert tag for product
+        //    $tagIds = [];
+        //    if(!empty($request->tags)){
+        //        foreach($request->tags as $tagItem){
+        //            $tagInstance = $this->tag->firstOrCreate([
+        //                'name' => $tagItem,
+        //            ]);
+        //            $tagIds[] = $tagInstance->id;
+        //        }
+        //     }
+        //     $product->tags()->attach($tagIds);
+
             DB::commit();
             return redirect()->back()->with('success','Thêm thành công sản phẩm');
 
@@ -176,12 +175,11 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = $this->product->find($id);
-        $htmlOption = $this->getCategory($product->category_id);
-        $color = Attribute::where('attr_name','color')->get();
         $size = Attribute::where('attr_name','size')->get();
         $id_attr = ProAttr::where('id_product', $id)->pluck('id_attr')->toArray();
         $brand = Brand::orderBy('id', 'DESC')->get();
-        return view('Backend.pages.Product.edit_pro', compact('htmlOption','color','size', 'brand', 'product', 'id_attr'));
+        $category = Category::orderBy('id', 'DESC')->get();
+        return view('Backend.pages.Product.edit_pro', compact('category', 'size', 'brand', 'product', 'id_attr'));
     }
 
     /**
@@ -193,23 +191,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $data = $request->validate(
-        //     [
-        //         'pro_name' => 'required|unique:tbl_product|max:255',
-        //         'feature_image' => 'required',
-        //         'pro_content' => 'required',
-        //         'slug' => 'required',
-        //     ],
-        //     [
-
-        //         'pro_name.required' => 'Tên sản phẩm là bắt buộc',
-        //         'pro_name.max' => 'Tên sản phẩm không vượt quá 255 kí tự',
-        //         'feature_image' => 'Hình ảnh sản phẩm là bắt buộc',
-        //         'slug.required' => 'Slug sản phẩm là bắt buộc',
-        //         'slug.max' => 'Slug sản phẩm không vượt quá 255 kí tự',
-        //         'pro_content.required' => 'trạng thái là phải có nhé',
-        //     ]
-        // );
         try {
             DB::beginTransaction();
             $dataProductUpdate =[
@@ -219,8 +200,15 @@ class ProductController extends Controller
                 'pro_name'=>$request->pro_name,
                 'pro_price'=>$request->pro_price,
                 'pro_content'=>$request->pro_content,
+                'pro_desc' => $request->pro_desc,
                 'slug'=>$request->slug,
+                'discount'=>$request->discount,
                 'pro_status'=>$request->pro_status,
+                'Sku'=>$request->Sku,
+                'weight'=>$request->weight,
+                'qty'=>$request->qty,
+                'featured'=>$request->featured,
+                'pro_tag'=>$request->pro_tag,
             ];
             $dataUploadImage = $this->storageTraitUpload($request,'feature_image','product');
             if(!empty($dataUploadImage)){
@@ -235,7 +223,7 @@ class ProductController extends Controller
             foreach($request->id_attr as $value ){
                 $this->proAttr->create([
                     'id_product'=> $product->id,
-                    'id_attr' =>$value
+                    'id_attr' => $value
                 ]);
             }
             //Insert data to product_image
@@ -250,18 +238,18 @@ class ProductController extends Controller
                         ]);
                 }
             }
-           //Insert tag for product
-           $tagIds = [];
-           if(!empty($request->tags)){
-               foreach($request->tags as $tagItem){
+        //    //Insert tag for product
+        //    $tagIds = [];
+        //    if(!empty($request->tags)){
+        //        foreach($request->tags as $tagItem){
 
-                   $tagInstance = $this->tag->firstOrCreate([
-                       'name' => $tagItem,
-                   ]);
-                   $tagIds[] = $tagInstance->id;
-               }
-           }
-           $product->tags()->sync($tagIds);
+        //            $tagInstance = $this->tag->firstOrCreate([
+        //                'name' => $tagItem,
+        //            ]);
+        //            $tagIds[] = $tagInstance->id;
+        //        }
+        //    }
+        //    $product->tags()->sync($tagIds);
 
             DB::commit();
             return redirect()->back()->with('success','Sửa thành công sản phẩm');

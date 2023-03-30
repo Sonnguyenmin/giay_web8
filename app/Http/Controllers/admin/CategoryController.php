@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Menu;
+use App\Models\Product;
 use App\Components\Recursive;
 
 class CategoryController extends Controller
@@ -26,7 +28,6 @@ class CategoryController extends Controller
     {
 
         $category = Category::orderBy('id','DESC')->get();
-        // $category = $this->category->latest()->paginate(5);
         return view('Backend.pages.Category.index_cate',compact('category'));
     }
 
@@ -37,8 +38,7 @@ class CategoryController extends Controller
      */
     public function create(Request $request)
     {
-        $htmlOption = $this->getCategory($parentId = "");
-        return view('Backend.pages.Category.create_cate', compact('htmlOption'));
+        return view('Backend.pages.Category.create_cate');
     }
 
     /**
@@ -67,7 +67,6 @@ class CategoryController extends Controller
         );
         $this->category->create([
             'cate_name' => $request->cate_name,
-            'parent_id'=> $request->parent_id,
             'slug' => $request->slug,
             'cate_status' => $request->cate_status
         ]);
@@ -94,7 +93,6 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);//tìm đến cái id cần sửa
-        $htmlOption =$this->getCategory($category->parent_id);
         return view('Backend.pages.Category.edit_cate',compact('category','htmlOption'));
     }
 
@@ -107,23 +105,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate(
-            [
-                'cate_name' => 'required|unique:tbl_category|max:255',
-                'slug' =>'required|max:255',
-                'cate_status' => 'required',
-            ],
-            [
-                'cate_name.unique' => 'Tên danh mục đã có, xin điền tên khác',
-                'cate_name.max' => 'Tên danh mục không vượt quá 255 kí tự',
-                'slug.unique' => 'slug danh mục đã có, xin điền slug khác',
-                'slug.max' => 'slug danh mục không vượt quá 255 kí tự',
-                'cate_status.required' => 'trạng thái là phải có nhé',
-            ]
-        );
+        // $data = $request->validate(
+        //     [
+        //         'cate_name' => 'required|unique:tbl_category|max:255',
+        //         'slug' =>'required|max:255',
+        //         'cate_status' => 'required',
+        //     ],
+        //     [
+        //         'cate_name.unique' => 'Tên danh mục đã có, xin điền tên khác',
+        //         'cate_name.max' => 'Tên danh mục không vượt quá 255 kí tự',
+        //         'slug.unique' => 'slug danh mục đã có, xin điền slug khác',
+        //         'slug.max' => 'slug danh mục không vượt quá 255 kí tự',
+        //         'cate_status.required' => 'trạng thái là phải có nhé',
+        //     ]
+        // );
         $this->category->find($id)->update([
             'cate_name' => $request->cate_name,
-            'parent_id'=> $request->parent_id,
             'slug' => $request->slug,
             'cate_status' => $request->cate_status
         ]);
@@ -143,11 +140,11 @@ class CategoryController extends Controller
         return redirect()->back();
     }
 
-    public function getCategory($parentId){//function dùng chung
-        $data = $this->category->all();
-        $recusive = new Recursive($data);
-        $htmlOption = $recusive->categoryRecusive($parentId);
+    // public function getCategory($parentId){//function dùng chung
+    //     $data = $this->category->all();
+    //     $recusive = new Recursive($data);
+    //     $htmlOption = $recusive->categoryRecusive($parentId);
+    //     return $htmlOption;
+    // }
 
-        return $htmlOption;
-    }
 }

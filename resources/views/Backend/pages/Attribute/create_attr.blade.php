@@ -27,33 +27,26 @@
                       </span>
                     </div>
 
-                    <form class="form theme-form" action="{{route('attribute.store')}}" method="Post">
+                    <form class="form theme-form" action="{{route('attribute.store') }}" method="Post">
                         @csrf
                       <div class="card-body">
                         <div class="row">
-                          <div class="col">
+                            <div class="col">
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Tên thuộc tính</label>
                                     <div class="col-sm-9">
                                         <select class="form-select digits" name="attr_name" id="InputName">
-                                            <option value="color">Màu sắc</option>
-                                            <option value="size">Kích thước</option>
+                                            <option value="size">Size</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row value1"  >
+                                <div class="row value1" >
                                     <label class="col-sm-3 col-form-label pt-0">Giá trị</label>
                                     <div class="col-sm-9">
-                                      <input id="slug1" class="form-control form-control-color" style="max-width: 16rem;" type="color" name="attr_value">
+                                        <input id="slug1" class="form-control " type="text" placeholder="Nhập kích thước ..."  name="attr_value">
                                     </div>
                                 </div>
-                                <div class="row value2" style="display: none">
-                                    <label class="col-sm-3 col-form-label pt-0">Giá trị</label>
-                                    <div class="col-sm-9">
-                                      <input id="slug2" class="form-control " type="text" placeholder="Nhập kích thước ..."  name="">
-                                    </div>
-                                </div>
-                          </div>
+                            </div>
                         </div>
                       </div>
                       <div class="card-footer text-end">
@@ -71,3 +64,28 @@
     </div>
 </div>
 @endsection
+
+{{--
+<div class="col">
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Tên thuộc tính</label>
+        <div class="col-sm-9">
+            <select class="form-select digits" name="attr_name" id="InputName">
+                <option value="color">Màu sắc</option>
+                <option value="size">Kích thước</option>
+            </select>
+        </div>
+    </div>
+    <div class="row value1"  >
+        <label class="col-sm-3 col-form-label pt-0">Giá trị</label>
+        <div class="col-sm-9">
+          <input id="slug1" class="form-control form-control-color" style="max-width: 16rem;" type="color" name="attr_value">
+        </div>
+    </div>
+    <div class="row value2" style="display: none">
+        <label class="col-sm-3 col-form-label pt-0">Giá trị</label>
+        <div class="col-sm-9">
+          <input id="slug2" class="form-control " type="text" placeholder="Nhập kích thước ..."  name="">
+        </div>
+    </div>
+</div> --}}

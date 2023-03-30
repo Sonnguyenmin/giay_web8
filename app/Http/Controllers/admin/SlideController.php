@@ -68,6 +68,7 @@ class SlideController extends Controller
         try{
             DB::beginTransaction();
             $dataSlide =[
+                'slide_title' => $request->slide_title,
                 'slide_name' => $request->slide_name,
                 'slide_desc' => $request->slide_desc
             ];
@@ -137,6 +138,7 @@ class SlideController extends Controller
         try{
             DB::beginTransaction();
             $dataUpdate =[
+                'slide_title' => $request->slide_title,
                 'slide_name' => $request->slide_name,
                 'slide_desc' => $request->slide_desc
             ];

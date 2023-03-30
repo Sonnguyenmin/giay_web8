@@ -1,36 +1,42 @@
 <?php
-use App\Http\Controllers\Controller;
+
 namespace App\Http\Controllers;
 use App\Models\Slide;
+use App\Service\Product\ProductServiceInterface;
+use App\Service\Category\CategoryServiceInterface;
+use App\Service\Brand\BrandServiceInterface;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Menu;
+use App\Models\ProImage;
+use App\Models\ProAttr;
+use App\Models\Attrbute;
 
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function index(){
-        $slide = Slide::latest()->get();
-        $brand = Brand::orderBy('id','DESC')->get();
-        $category = Category::where('parent_id', 0)->get();
-        $menuLimit = Menu::where('parent_id', 0)->take(12)->get();
-        $product = Product::latest()->take(8)->get();
-        $pro_view = Product::latest('views_count', 'DESC')->take(12)->get();
-        return view('Frontend.group_layout.layout',compact('slide', 'product', 'pro_view','category','menuLimit'));
-    }
-    public function contact(){
-        $menuLimit = Menu::where('parent_id', 0)->take(12)->get();
-        return view('Frontend.contact',compact('menuLimit'));
-    }
-    public function cart(){
-        $menuLimit = Menu::where('parent_id', 0)->take(12)->get();
-        return view('Frontend.cart',compact('menuLimit'));
+    private $productService;
+
+    public function __construct(ProductServiceInterface $productService,
+                                CategoryServiceInterface $CategoryService,
+                                BrandServiceInterface $BrandService)
+    {
+        $this->productService = $productService;
+        $this->CategoryService = $CategoryService;
+        $this->BrandService = $BrandService;
     }
 
-    public function shop(){
-        $menuLimit = Menu::where('parent_id', 0)->take(12)->get();
-        return view('Frontend.shop',compact('menuLimit'));
+    public function index() {
+
+        $featuredProducts = $this->productService->getFeaturedProducts();
+        $featuredSale = $this->productService->getFeaturedProductsSale();
+        $slide = Slide::orderBy('id','DESC')->get();
+        $brands = $this->BrandService->all();
+        $categories = $this->CategoryService->all();
+
+        return view('Frontend.User_Layout',compact('slide', 'featuredProducts', 'featuredSale','categories', 'brands'));
     }
+
 }

@@ -35,7 +35,7 @@
                         <a class="dropdown-item" href="{{route('setting.create') .'?type=Text'}}" style="color: #55adf4">Text</a>
                         <a class="dropdown-item" href="{{route('setting.create') .'?type=Textarea'}}" style="color: #cb21ff">Textarea</a>
                     </div>
-                  </div>
+                </div>
                 <div class="table-responsive">
                 <table class="display" id="basic-1">
                     <thead>

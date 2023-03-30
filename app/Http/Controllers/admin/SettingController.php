@@ -96,23 +96,11 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $data = $request->validate(
-            [
-                'config_key' => 'required|unique:tbl_setting|max:255',
-                'config_value' =>'required|max:255',
-            ],
-            [
-                'config_key.unique' => 'Tên setting đã có, xin điền tên khác',
-                'config_key.max' => 'Tên setting không vượt quá 255 kí tự',
-                'config_value.unique' => 'Giá trị setting đã có, xin điền slug khác',
-            ]
-        );
         $this->setting->find($id)->update([
             'config_key' => $request->config_key,
             'config_value' => $request->config_value
         ]);
-        return redirect()->back()->with('success','Sửa thành công setting ', compact('setting'));
+        return redirect()->back()->with('success','Sửa thành công setting ');
     }
 
     /**

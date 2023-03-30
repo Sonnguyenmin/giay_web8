@@ -11,13 +11,13 @@ class Category extends Model
     public $timestamp = true;
     protected $table = 'tbl_category';
     protected $fillable = [
-        'cate_name', 'parent_id' , 'slug', 'cate_status',
+        'cate_name', 'slug', 'cate_status',
     ];
 
-    public function categoryChild()
-    {
-        return $this->hasMany(Category::class, 'parent_id');
-    }
+    // public function categoryChild()
+    // {
+    //     return $this->hasMany(Category::class, 'parent_id');
+    // }
 
     public function products(){
         return $this->hasMany(Product::class, 'category_id');

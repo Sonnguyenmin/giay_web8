@@ -20,9 +20,11 @@ class CreateTblProduct extends Migration
             $table->integer('category_id');
             $table->string('pro_name');
             $table->integer('pro_price');
+            $table->integer('discount')->nullable();
             $table->string('feature_image')->nullable();
             $table->string('feature_image_name')->nullable();
             $table->text('pro_content');
+            $table->text('pro_desc');
             $table->string('slug');
             $table->integer('pro_status');
             $table->timestamps();

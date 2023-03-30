@@ -39,15 +39,6 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-3 col-form-label">Danh mục cha:</label>
-                                        <div class="col-sm-9">
-                                            <select class="form-select digits" name="parent_id" >
-                                                <option value= "{{$category->parent_id}}">chọn danh mục cha </option>
-                                                {!!$htmlOption!!}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">Slug</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" value="{{$category->slug}}" id="convert_slug" type="text" name="slug">

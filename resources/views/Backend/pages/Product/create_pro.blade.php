@@ -48,7 +48,9 @@
                                         <div class="col-sm-9">
                                             <select class="form-select digits select_2" name="category_id" >
                                                 <option value= "">danh mục: </option>
-                                                {!!$htmlOption!!}
+                                                @foreach ($category as $key => $cate)
+                                                    <option value="{{$cate->id}}">{{$cate->cate_name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -65,34 +67,65 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-3 col-form-label">Giá tiền</label>
-                                        <div class="col-sm-9">
-                                        <input class="form-control"  type="text"  name="pro_price">
+                                        <div class="col-sm-4">
+                                            <div class="mb-3">
+                                                <label class="col-sm-3 col-form-label pt-0">Giá tiền</label>
+                                                <div >
+                                                    <input class="form-control"  type="text"  name="pro_price">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="mb-3">
+                                                <label class="col-sm-3 col-form-label pt-0">Giảm giá</label>
+                                                <div >
+                                                    <input class="form-control"  type="text"  name="discount">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="mb-3">
+                                                <label class="col-sm-3 col-form-label pt-0">Đặc trưng</label>
+                                                <div >
+                                                    <input class="form-control"  type="text"  name="featured">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="mb-3">
-                                                <label class="col-sm-3 col-form-label pt-0">Màu sắc</label>
+                                                <label class="col-sm-3 col-form-label pt-0">Số lượng</label>
                                                 <div >
-                                                    @foreach ($color as $key=> $value)
-                                                        <input style="font-size: 20px"  class="form-check-input" type="checkbox"  value="{{$value->id}}" name="id_attr[]">
-                                                        <i data-feather="shopping-bag" style="margin-right: 10px; position: relative; top: 2px; color:{{$value->attr_value}}"></i>
-                                                    @endforeach
+                                                    <input class="form-control"  type="text"  name="qty">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="mb-3">
-                                                <label class="form-label">Kích thước</label>
+                                                <label class="col-sm-3 col-form-label pt-0">Sku</label>
                                                 <div >
-                                                    @foreach ($size as $key=> $value)
-                                                        <input style="font-size: 20px"  class="form-check-input" type="checkbox" value="{{$value->id}}" name="id_attr[]">
-                                                        <span style="font-size: 16px; margin-right: 6px; position: relative; top: 3px;">{{$value->attr_value}} </span>
-                                                    @endforeach
+                                                    <input class="form-control"  type="text"  name="Sku">
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-sm-4">
+                                            <div class="mb-3">
+                                                <label class="col-sm-5 col-form-label pt-0">kích thước bàn chân</label>
+                                                <div >
+                                                    <input class="form-control"  type="text"  name="weight">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label">Kích thước</label>
+                                            <div class="col-sm-9">
+                                                @foreach ($size as $key=> $value)
+                                                    <input style="font-size: 20px"  class="form-check-input" type="checkbox" value="{{$value->id}}" name="id_attr[]">
+                                                    <span style="font-size: 16px; margin-right: 6px; position: relative; top: 3px;">{{$value->attr_value}} </span>
+                                                @endforeach
+                                            </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">Hình ảnh</label>
@@ -109,8 +142,7 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">Nhập tag cho sản phẩm:</label>
                                         <div class="col-sm-9" >
-                                            <select name="tags[]" class="form-control tag_select" multiple="multiple">
-                                            </select>
+                                            <input type="text" name="tag" >
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -118,14 +150,19 @@
                                         <div class="col-sm-9">
                                             <textarea class="form-control tinymce_edit" style="resize: none" rows="6" cols="6" name="pro_content" placeholder="Nội dung sản phẩm"></textarea>
                                         </div>
-
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label">Mô tả</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control tinymce_edit" style="resize: none" rows="6" cols="6" name="pro_desc" placeholder="Mô tả sản sản phẩm"></textarea>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <label class="col-sm-3 col-form-label">Trạng thái</label>
                                         <div class="col-sm-9">
                                             <select class="form-select digits" name="pro_status" >
-                                                <option value= "0">Ẩn </option>
-                                                <option value="1">Hiển thị</option>
+                                                <option value= "0">0 </option>
+                                                <option value="1">1</option>
                                             </select>
                                         </div>
                                     </div>

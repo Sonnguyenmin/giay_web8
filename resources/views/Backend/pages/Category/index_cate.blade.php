@@ -39,7 +39,6 @@
                         <th style="width: 20px">STT</th>
                         <th>ID</th>
                         <th>Tên danh mục</th>
-                        <th>Lớp danh mục </th>
                         <th>Slug</th>
                         <th>Trạng thái</th>
                         <th>Thời gian</th>
@@ -55,7 +54,6 @@
                             <td style="text-align: center ; width: 20px">{{ $stt++ }}</td>
                             <td style="text-align: center">{{$cate->id}}</td>
                             <td style="text-align: center">{{$cate->cate_name}}</td>
-                            <td style="text-align: center">{{$cate->parent_id}} </td>
                             <td style="text-align: center">{{$cate->slug}}</td>
                             <td style="text-align: center;width: 120px;">
                                 @if($cate->cate_status == 0)

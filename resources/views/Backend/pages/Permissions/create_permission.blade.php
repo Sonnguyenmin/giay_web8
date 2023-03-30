@@ -53,7 +53,6 @@
                                                         <div class="page-builder">
                                                             <div id="myGrid">
                                                                 <div class="row" >
-
                                                                     @foreach (config('permission.module_inner') as $ItemInner)
                                                                         <div class="col-md-3" >
                                                                             <input style="font-size: 20px"

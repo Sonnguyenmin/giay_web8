@@ -13,4 +13,6 @@ class ProAttr extends Model
     protected $fillable = [
         'id_product', 'id_attr'
     ];
+
+    
 }

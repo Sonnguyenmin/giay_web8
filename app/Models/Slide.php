@@ -10,6 +10,6 @@ class Slide extends Model
     public $timestamp = true;
     protected $table = 'tbl_slide';
     protected $fillable = [
-        'slide_name', 'slide_desc','image_path'
+        'slide_title','slide_name', 'slide_desc','image_path'
     ];
 }

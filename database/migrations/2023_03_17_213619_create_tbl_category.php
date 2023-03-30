@@ -17,7 +17,6 @@ class CreateTblCategory extends Migration
             $table->increments('id');
             $table->string('cate_name');
             $table->string('slug');
-            $table->integer('parent_id')->default(0);
             $table->integer('cate_status');
             $table->timestampsTz();
         });

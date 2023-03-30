@@ -11,15 +11,10 @@ class Product extends Model
     public $timestamp = true;
     protected $table = 'tbl_product';
     protected $fillable = [
-        'brand_id', 'user_id', 'category_id', 'pro_name','pro_price', 'feature_image','feature_image_name' , 'pro_content', 'slug', 'pro_status', 'views_count'
+        'brand_id', 'user_id', 'category_id', 'pro_name','pro_price', 'feature_image','feature_image_name' , 'pro_content', 'slug', 'pro_status', 'views_count','discount', 'pro_desc','qty', 'weight', 'Sku', 'tag'
     ];
     public function images(){
         return $this->hasMany(ProImage::class, 'product_id');
-    }
-    public function tags(){
-        return $this->belongsToMany(Tag::class, 'pro_tags', 'product_id','tag_id')
-        ->withTimestamps();
-        //eloquent relationships : bảng, bảng trung gian, khóa ngoại, khóa bảng
     }
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
@@ -30,5 +25,7 @@ class Product extends Model
     public function proImages(){//1 product-nhiều hình ảnh chi tiết
         return $this->hasMany(proImage::class,'product_id');
     }
-
+    public function attrs(){
+        return $this->belongsToMany(Attribute::class, 'pro_attrs' , 'id_product', 'id_attr')->withTimestamps();
+    }
 }
