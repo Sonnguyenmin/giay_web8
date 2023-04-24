@@ -11,7 +11,9 @@
             'list-user' => 'user_list',
             'list-setting' => 'setting_list',
             'list-role' => 'role_list',
-            'list-permission' => 'permission_list'
+            'list-permission' => 'permission_list',
+            'list-order' => 'order_list',
+            'list-statistical' => 'statistical_list'
         ],
         'table_module' => [
             'category',
@@ -23,7 +25,9 @@
             'user',
             'setting',
             'role',
-            'permission'
+            'permission',
+            'order',
+            'statistical'
         ],
         'module_inner' => [
             'list',

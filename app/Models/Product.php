@@ -10,8 +10,9 @@ class Product extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'tbl_product';
-    protected $fillable = [
-        'brand_id', 'user_id', 'category_id', 'pro_name','pro_price', 'feature_image','feature_image_name' , 'pro_content', 'slug', 'pro_status', 'views_count','discount', 'pro_desc','qty', 'weight', 'Sku', 'tag'
+    protected $primaryKey = 'id';
+    protected $guarded = [
+
     ];
     public function images(){
         return $this->hasMany(ProImage::class, 'product_id');
@@ -27,5 +28,13 @@ class Product extends Model
     }
     public function attrs(){
         return $this->belongsToMany(Attribute::class, 'pro_attrs' , 'id_product', 'id_attr')->withTimestamps();
+    }
+
+    public function productComments() {
+        return $this->hasMany(ProductComment::class, 'product_id', 'id');
+    }
+
+    public function orderDetails() {
+        return $this->hasMany(OrderDetails::class, 'product_id', 'id');
     }
 }

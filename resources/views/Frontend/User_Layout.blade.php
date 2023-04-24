@@ -14,9 +14,6 @@
                                 <a href="{{route('shop')}}" class="primary-btn">Khám phá</a>
                             </div>
                         </div>
-                        {{-- <div class="off-card">
-                            <h2>Sale <span>50%</span></h2>
-                        </div> --}}
                     </div>
                 </div>
             @endforeach
@@ -97,12 +94,10 @@
                                         <i class="icon_heart_alt"></i>
                                     </div>
                                     <ul>
-                                        <li class="w-icon active"><a href="{{route('addCart',['id' => $product->id])}}">
-                                            <i class="icon_bag_alt"></i>
-                                        </a></li>
-                                        <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Quick View</a></li>
+
+                                        <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Chi tiết</a></li>
                                         <li class="w-icon"><a href="">
-                                            <i class="fa fa-random"></i>
+                                            <i class="fa fa-heart"></i>
                                         </a></li>
                                     </ul>
                                 </div>
@@ -115,10 +110,10 @@
                                     </a>
                                     <div class="product-price">
                                         @if ($product->discount != null)
-                                            {{number_format($product->discount)}}vnđ
-                                            <span>{{number_format($product->pro_price)}}vnđ</span>
+                                            {{number_format($product->discount)}}đ
+                                            <span>{{number_format($product->pro_price)}}đ</span>
                                         @else
-                                            {{number_format($product->pro_price)}}vnđ
+                                            {{number_format($product->pro_price)}}đ
                                         @endif
                                     </div>
                                 </div>
@@ -180,6 +175,7 @@
                             <li class="item" data-tag=".Adidas" data-category="men">Adidas</li>
                             <li class="item" data-tag=".Jordan" data-category="men">Jordan</li>
                             <li class="item" data-tag=".Yeezy" data-category="men">Yeezy</li>
+
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel men">
@@ -194,10 +190,8 @@
                                         <i class="icon_heart_alt"></i>
                                     </div>
                                     <ul>
-                                        <li class="w-icon active"><a href="">
-                                            <i class="icon_bag_alt"></i>
-                                        </a></li>
-                                        <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Quick View</a></li>
+
+                                        <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Chi tiết</a></li>
                                         <li class="w-icon"><a href="">
                                             <i class="fa fa-random"></i>
                                         </a></li>
@@ -212,10 +206,10 @@
                                     </a>
                                     <div class="product-price">
                                         @if ($product->discount != null)
-                                            {{number_format($product->discount)}}vnđ
-                                            <span>{{number_format($product->pro_price)}}vnđ</span>
+                                            {{number_format($product->discount)}}đ
+                                            <span>{{number_format($product->pro_price)}}đ</span>
                                         @else
-                                            {{number_format($product->pro_price)}}vnđ
+                                            {{number_format($product->pro_price)}}đ
                                         @endif
                                     </div>
                                 </div>
@@ -234,7 +228,7 @@
     </section>
     <!-- man Banner Section End -->
 
-     <!-- Women Banner Section Begin -->
+     <!-- Sale Banner Section Begin -->
      <section class="women-banner spad" >
         <div class="container-fluid">
             <div class="row">
@@ -250,6 +244,7 @@
                             <li class="item" data-tag=".Adidas" data-category="sale">Adidas</li>
                             <li class="item" data-tag=".Jordan" data-category="sale">Jordan</li>
                             <li class="item" data-tag=".Yeezy" data-category="sale">Yeezy</li>
+
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel sale">
@@ -264,10 +259,8 @@
                                         <i class="icon_heart_alt"></i>
                                     </div>
                                     <ul>
-                                        <li class="w-icon active"><a href="">
-                                            <i class="icon_bag_alt"></i>
-                                        </a></li>
-                                        <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Quick View</a></li>
+
+                                        <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+Chi tiết</a></li>
                                         <li class="w-icon"><a href="">
                                             <i class="fa fa-random"></i>
                                         </a></li>
@@ -282,10 +275,10 @@
                                     </a>
                                     <div class="product-price">
                                         @if ($product->discount != null)
-                                            {{number_format($product->discount)}}vnđ
-                                            <span>{{number_format($product->pro_price)}}vnđ</span>
+                                            {{number_format($product->discount)}}đ
+                                            <span>{{number_format($product->pro_price)}}đ</span>
                                         @else
-                                            {{number_format($product->pro_price)}}vnđ
+                                            {{number_format($product->pro_price)}}đ
                                         @endif
                                     </div>
                                 </div>
@@ -296,7 +289,7 @@
             </div>
         </div>
     </section>
-    <!-- Women Banner Section End -->
+    <!-- Sale Banner Section End -->
 
     <!-- Latest Blog Section Begin -->
     <section class="latest-blog spad">
@@ -309,69 +302,29 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6" >
-                    <div class="single-latest-blog">
-                        <img src="{{asset('Frontend/assets/img/latest-1.jpg')}}" alt="">
-                        <div class="latest-text">
-                            <div class="tag-list">
-                                <div class="tag-item">
-                                    <i class="fa fa-calendar-o"></i>
-                                    May 4,2022
+                @foreach ($blogs as $blog)
+                    <div class="col-lg-4 col-md-6" >
+                        <div class="single-latest-blog">
+                            <img src="{{$blog->image}}" alt="">
+                            <div class="latest-text">
+                                <div class="tag-list">
+                                    <div class="tag-item">
+                                        <i class="fa fa-calendar-o"></i>
+                                        {{date('M d, Y', strtotime($blog->created_at))}}
+                                    </div>
+                                    <div class="tag-item">
+                                        <i class="fa fa-comment-o"></i>
+                                        {{count($blog->blogComments)}}
+                                    </div>
                                 </div>
-                                <div class="tag-item">
-                                    <i class="fa fa-comment-o"></i>
-                                    5
-                                </div>
+                                <a href="{{route('blog')}}">
+                                    <h4>{{$blog->title}}</h4>
+                                </a>
+                                <p>{{$blog->subtitle}}</p>
                             </div>
-                            <a href="">
-                                <h4>The Best Street Style From London codeleanom Week</h4>
-                            </a>
-                            <p>Sed quia non numquan modi ...</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6" >
-                    <div class="single-latest-blog">
-                        <img src="{{asset('Frontend/assets/img/latest-2.jpg')}}" alt="">
-                        <div class="latest-text">
-                            <div class="tag-list">
-                                <div class="tag-item">
-                                    <i class="fa fa-calendar-o"></i>
-                                    May 4,2022
-                                </div>
-                                <div class="tag-item">
-                                    <i class="fa fa-comment-o"></i>
-                                    5
-                                </div>
-                            </div>
-                            <a href="">
-                                <h4>The Best Street Style From London codeleanom Week</h4>
-                            </a>
-                            <p>Sed quia non numquan modi ...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" >
-                    <div class="single-latest-blog">
-                        <img src="{{asset('Frontend/assets/img/latest-3.jpg')}}" alt="">
-                        <div class="latest-text">
-                            <div class="tag-list">
-                                <div class="tag-item">
-                                    <i class="fa fa-calendar-o"></i>
-                                    May 4,2022
-                                </div>
-                                <div class="tag-item">
-                                    <i class="fa fa-comment-o"></i>
-                                    5
-                                </div>
-                            </div>
-                            <a href="">
-                                <h4>The Best Street Style From London codeleanom Week</h4>
-                            </a>
-                            <p>Sed quia non numquan modi ...</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="benefit-items">
                 <div class="row">
@@ -381,8 +334,8 @@
                                 <img src="{{asset('Frontend/assets/img/icon-1.png')}}" alt="">
                             </div>
                             <div class="sb-text">
-                                <h6>Free Shipping</h6>
-                                <p>For all order over 99$</p>
+                                <h6>Vận chuyển</h6>
+                                <p>Miễn phí vận chuyển với mọi đơn hàng</p>
                             </div>
                         </div>
                     </div>
@@ -392,8 +345,8 @@
                                 <img src="{{asset('Frontend/assets/img/icon-2.png')}}" alt="">
                             </div>
                             <div class="sb-text">
-                                <h6>Free Shipping</h6>
-                                <p>For all order over 99$</p>
+                                <h6>Giao hàng đúng hạn</h6>
+                                <p>Nhanh chóng nhất đến tay người sử dụng</p>
                             </div>
                         </div>
                     </div>
@@ -403,8 +356,8 @@
                                 <img src="{{asset('Frontend/assets/img/icon-3.png')}}" alt="">
                             </div>
                             <div class="sb-text">
-                                <h6>Free Shipping</h6>
-                                <p>For all order over 99$</p>
+                                <h6>Thanh toán an toàn</h6>
+                                <p>Thanh toán an toàn 100%</p>
                             </div>
                         </div>
                     </div>

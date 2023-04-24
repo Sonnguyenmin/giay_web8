@@ -36,21 +36,21 @@
                 <table class="display" id="basic-1">
                     <thead>
                     <tr style="text-align: center">
-                        <th style="width: 20px">STT</th>
+                        <th>STT</th>
                         <th>TH</th>
                         <th>User</th>
                         <th>DM</th>
                         <th>Tên SP</th>
+                        <th>Slug</th>
                         <th>Giá tiền</th>
                         <th>Hình ảnh</th>
                         <th>Nội dung</th>
-                        <th>Slug</th>
-                        <th>Qty</th>
+                        <th>SL</th>
                         <th>Sku</th>
-                        <th>TgT</th>
+                        <th>Hiển thị</th>
                         <th>Tag</th>
                         <th>Thời gian</th>
-                        <th style="width: 120px;">Hành động</th>
+                        <th style="width: 100px;">Hành động</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,42 +58,48 @@
                             $stt = 1
                         @endphp
                      @foreach ($products as $key => $proItem)
-                        <tr>
-                            <td style="text-align: center ; width: 20px">{{ $stt++ }}</td>
+                        <tr >
+                            <td style="text-align: center">{{ $stt++ }}</td>
                             <td style="text-align: center">{{$proItem->brand->brand_name}}</td>
                             <td style="text-align: center">{{$proItem->user_id}}</td>
                             <td style="text-align: center">{{$proItem->category->cate_name}}</td>
                             <td style="text-align: center">{{$proItem->pro_name}}</td>
-                            <td style="text-align: center">{{number_format($proItem->pro_price)}}vnđ</td>
+                            <td style="text-align: center">{{$proItem->slug}}</td>
+                            <td style="text-align: center">{{number_format($proItem->pro_price)}}đ</td>
                             <td style="text-align: center">
                                 <img src="{{$proItem->feature_image}}" alt="" style="width: 100px; height: 100px; border-radius: 6px">
                             </td>
-                            <td style="text-align: center; width: 300px">{{$proItem->pro_content}} </td>
-                            <td style="text-align: center">{{$proItem->slug}}</td>
+
+                            <td class="parent ellipsis block-ellipsis " style="text-align: center;">
+                                @if ($proItem->pro_content != null)
+                                    {{$proItem->pro_content}}
+                                @else
+                                    <span style="color: #d710e9">Nội dung đang được cập nhật </span>
+                                @endif
+                            </td>
+
                             <td style="text-align: center">{{$proItem->qty}}</td>
                             <td style="text-align: center">{{$proItem->Sku}}</td>
                              <td style="text-align: center;width: 120px;">
-                                @if($proItem->pro_status == 0)
-                                    <span style="font-size: 13px" class="badge badge-light-danger">0</span>
+                                @if($proItem->pro_gender == 0)
+                                    <span style="font-size: 13px" class="badge badge-light-danger">Nam</span>
                                 @else
-                                    <span style="font-size: 13px" class="badge badge-light-success">1</span>
+                                    <span style="font-size: 13px" class="badge badge-light-success">Nữ</span>
                                 @endif
                             </td>
                             <td style="text-align: center">{{$proItem->tag}}</td>
                             <td style="text-align: center">{{$proItem->created_at->format(" d-m-Y")}}</td>
                             <td>
-                            <ul class="action" style="justify-content: center;">
+                            <ul class="action" style="justify-content: center; width: 100px">
+                                <li class="add">
+                                    <a href="{{route('product.create')}}" style="margin-right: 10px"><i class="icon-pencil"></i></a>
+                                </li>
                                 <li class="edit"> <a href="{{route('product.edit',$proItem->id)}}"><i class="icon-pencil-alt"></i></a></li>
                                 <form class="form theme-form" action="{{route('product.destroy',$proItem->id)}}" method="Post">
                                   @method('DELETE')
                                     @csrf
                                         <button class="delete" style="cursor: pointer; border:none"  onclick="return confirm('Bạn có muốn xóa sản phẩm này không ?');"><i class="icon-trash"></i></button>
                                 </form>
-                                {{-- <li class="delete" >
-                                    <a href=""
-                                    data-url="{{route('product.destroy', $proItem->id)}}"
-                                    class="action_delete"><i class="icon-trash"></i></a>
-                                </li> --}}
                             </ul>
                             </td>
                         </tr>

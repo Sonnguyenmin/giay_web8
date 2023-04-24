@@ -24,9 +24,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         ->get();
     }
 
-    public function getFeaturedProductsByStatus(int $proStatus){
+    public function getFeaturedProductsByStatus(int $proGender){
         return $this->model->where('featured', true)
-        ->where('pro_status',$proStatus)
+        ->where('pro_gender',$proGender)
         ->get();
     }
 
@@ -102,8 +102,6 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $brands = $request->brand ?? [];
         $brand_ids = array_keys($brands);
         $products = $brand_ids != null ? $products->whereIn('brand_id', $brand_ids) : $products;
-
-
         return $products;
     }
 

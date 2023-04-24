@@ -16,22 +16,22 @@ class ProductService extends BaseService implements ProductServiceInterface
         $this->repository = $productRepository;
     }
 
-    // public function find($id)
-    // {
-    //     $products =  $this->repository->find($id);
+    public function find($id)
+    {
+        $products =  $this->repository->find($id);
 
-    //     $avgRating = 0;
-    //     $sumRating = arrar_sum(array_column($products->productComments->toArray(), 'rating'));
-    //     $countRating = count($products->productComments);
-    //     if ($countRating != 0)
-    //     {
-    //         $avgRating = $sumRating/$countRating;
-    //     }
+        $avgRating = 0;
+        $sumRating = array_sum(array_column($products->productComments->toArray(), 'rating'));
+        $countRating = count($products->productComments);
+        if ($countRating != 0)
+        {
+            $avgRating = $sumRating/$countRating;
+        }
 
-    //     $products->avgRating = $avgRating;
+        $products->avgRating = $avgRating;
 
-    //     return $products;
-    // }
+        return $products;
+    }
 
     public function getRelatedProduct($product, $limit = 4)
     {

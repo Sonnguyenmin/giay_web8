@@ -57,14 +57,6 @@ class ProductController extends Controller
         $category = Category::orderBy('id', 'DESC')->get();
         return view('Backend.pages.Product.create_pro', compact('category', 'size', 'brand'));
     }
-
-    // public function getCategory($parentId){//function dùng chung
-    //     $data = $this->category->all();
-    //     $recusive = new Recursive($data);
-    //     $htmlOption = $recusive->categoryRecusive($parentId);
-    //     return $htmlOption;
-    // }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -77,7 +69,6 @@ class ProductController extends Controller
             [
                 'pro_name' => 'required|unique:tbl_product|max:255',
                 'feature_image' => 'required',
-                'pro_content' => 'required',
                 'slug' => 'required',
             ],
             [
@@ -88,7 +79,6 @@ class ProductController extends Controller
                 'slug.unique' => 'Slug sản phẩm đã có, xin điền Slug khác',
                 'slug.required' => 'Slug sản phẩm là bắt buộc',
                 'slug.max' => 'Slug sản phẩm không vượt quá 255 kí tự',
-                'pro_content.required' => 'trạng thái là phải có nhé',
             ]
         );
         try {
@@ -102,13 +92,13 @@ class ProductController extends Controller
                 'pro_content'=>$request->pro_content,
                 'pro_desc' => $request->pro_desc,
                 'slug'=>$request->slug,
-                'pro_status'=>$request->pro_status,
+                'pro_gender'=>$request->pro_gender,
                 'discount'=>$request->discount,
                 'Sku'=>$request->Sku,
                 'weight'=>$request->weight,
                 'qty'=>$request->qty,
                 'featured'=>$request->featured,
-                'pro_tag'=>$request->pro_tag,
+                'tag'=>$request->tag,
             ];
             $dataUploadImage = $this->storageTraitUpload($request,'feature_image','product');
             if(!empty($dataUploadImage)){
@@ -133,17 +123,6 @@ class ProductController extends Controller
                         ]);
                 }
             }
-        //    //Insert tag for product
-        //    $tagIds = [];
-        //    if(!empty($request->tags)){
-        //        foreach($request->tags as $tagItem){
-        //            $tagInstance = $this->tag->firstOrCreate([
-        //                'name' => $tagItem,
-        //            ]);
-        //            $tagIds[] = $tagInstance->id;
-        //        }
-        //     }
-        //     $product->tags()->attach($tagIds);
 
             DB::commit();
             return redirect()->back()->with('success','Thêm thành công sản phẩm');
@@ -203,12 +182,12 @@ class ProductController extends Controller
                 'pro_desc' => $request->pro_desc,
                 'slug'=>$request->slug,
                 'discount'=>$request->discount,
-                'pro_status'=>$request->pro_status,
+                'pro_gender'=>$request->pro_gender,
                 'Sku'=>$request->Sku,
                 'weight'=>$request->weight,
                 'qty'=>$request->qty,
                 'featured'=>$request->featured,
-                'pro_tag'=>$request->pro_tag,
+                'tag'=>$request->tag,
             ];
             $dataUploadImage = $this->storageTraitUpload($request,'feature_image','product');
             if(!empty($dataUploadImage)){
@@ -238,19 +217,6 @@ class ProductController extends Controller
                         ]);
                 }
             }
-        //    //Insert tag for product
-        //    $tagIds = [];
-        //    if(!empty($request->tags)){
-        //        foreach($request->tags as $tagItem){
-
-        //            $tagInstance = $this->tag->firstOrCreate([
-        //                'name' => $tagItem,
-        //            ]);
-        //            $tagIds[] = $tagInstance->id;
-        //        }
-        //    }
-        //    $product->tags()->sync($tagIds);
-
             DB::commit();
             return redirect()->back()->with('success','Sửa thành công sản phẩm');
 

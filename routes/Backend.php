@@ -2,6 +2,7 @@
     use App\Http\Controllers\Check\AdminController;
     use App\Http\Controllers\Check\BackendController;
     use App\Http\Controllers\Check\LogoutController;
+    
 
     /*
 |--------------------------------------------------------------------------

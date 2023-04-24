@@ -10,9 +10,8 @@ class Menu extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'tbl_menu';
-    protected $fillable = [
-        'menu_name', 'parent_id' , 'slug'
-    ];
+    protected $primaryKey = 'id';
+    protected $guarded = [];
     public function menuChild()
     {
         return $this->hasMany(Menu::class, 'parent_id');

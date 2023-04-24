@@ -56,5 +56,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('permission-list', function (User $user) {
             return $user->checkPermissionAccess(config('permission.access.list-permission'));
         });
+        Gate::define('order-list', function (User $user) {
+            return $user->checkPermissionAccess(config('permission.access.list-order'));
+        });
+
+        Gate::define('statistical-list', function (User $user) {
+            return $user->checkPermissionAccess(config('permission.access.list-statistical'));
+        });
     }
 }

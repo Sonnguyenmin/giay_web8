@@ -62,7 +62,7 @@
                                     @endif
 
                             </td>
-                            <td style="text-align: center">{{ $br->created_at->format("H:i:s d-m-Y")}}</td>
+                            <td style="text-align: center">{{ $br->created_at->format(" d-m-Y")}}</td>
                             <td>
                             <ul class="action" style="justify-content: center;">
                                 <li class="edit"> <a href="{{route('brand.edit', $br->id)}}"><i class="icon-pencil-alt"></i></a></li>

@@ -56,7 +56,8 @@ class ShopController extends Controller
         }
         $products = $products->paginate($perPage);
         $products->appends(['sort_by' => $sortBy, 'show'=> $perPage]);
-        return view('Frontend.user_Page.shop', compact('products'));
+        $productCount = Product::count();
+        return view('Frontend.user_Page.Index.shop', compact('products','productCount'));
     }
 
     public function show($id, $productId) {
@@ -64,14 +65,16 @@ class ShopController extends Controller
         $categories = $this->CategoryService->all();
         $products = $this->productService->find($productId);
         $relatedProducts = $this->productService->getRelatedProduct($products);
-        return view('Frontend.user_Page.detailProduct', compact('products', 'relatedProducts','brands', 'categories'));
+        $productCount = Product::count();
+        return view('Frontend.user_Page.Index.detailProduct', compact('products', 'relatedProducts','brands', 'categories','productCount'));
     }
 
     public function index(Request $request){
         $brands = $this->BrandService->all();
         $categories = $this->CategoryService->all();
         $products = $this->productService->getProductOnIndex($request);
-        return view('Frontend.user_Page.shop', compact('products', 'categories','brands'));
+        $productCount = Product::count();
+        return view('Frontend.user_Page.Index.shop', compact('products', 'categories','brands','productCount'));
     }
 
     public function category( $cateName, Request $request)
@@ -79,7 +82,8 @@ class ShopController extends Controller
         $brands = $this->BrandService->all();
         $categories = $this->CategoryService->all();
         $products = $this->productService->getProByCate($cateName, $request);
-        return view('Frontend.user_Page.shop', compact('products', 'categories', 'brands'));
+        $productCount = Product::count();
+        return view('Frontend.user_Page.Index.shop', compact('products', 'categories', 'brands','productCount'));
     }
 
     public function brand( $brandName, Request $request)
@@ -87,6 +91,7 @@ class ShopController extends Controller
         $brands = $this->BrandService->all();
         $categories = $this->CategoryService->all();
         $products = $this->productService->getProByBrand($brandName, $request);
-        return view('Frontend.user_Page.shop', compact('products', 'categories', 'brands'));
+        $productCount = Product::count();
+        return view('Frontend.user_Page.Index.shop', compact('products', 'categories', 'brands','productCount'));
     }
 }

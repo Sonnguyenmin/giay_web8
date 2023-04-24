@@ -32,13 +32,6 @@
                 <a href="{{route('attribute.create')}}">
                     <button class="btn btn-primary mb-3" >Thêm thuộc tính</button>
                 </a>
-                {{-- <div class="btn-group" role="group" style="margin-bottom: 16px">
-                    <button class="btn btn-primary dropdown-toggle" id="btnGroupDrop1" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Thêm thuộc tính</button>
-                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <a class="dropdown-item" href="{{route('attribute.create') .'?type=Color'}}" style="color: #55adf4">Color</a>
-                        <a class="dropdown-item" href="{{route('attribute.create') .'?type=Size'}}" style="color: #cb21ff">Size</a>
-                    </div>
-                </div> --}}
                 <div class="table-responsive">
                 <table class="display" id="basic-1">
                     <thead>

@@ -22,7 +22,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header pb-0" style="display:flex; justify-content: space-between;">
-                        <h3>Thêm Sản Phẩm</h3>
+                        <h3>Sửa Sản Phẩm</h3>
                         <span style=" margin-top: 3px;">
                               @include('Backend.admin.alert')
                         </span>
@@ -37,16 +37,10 @@
                                         <label class="col-sm-3 col-form-label">Tên thương hiệu</label>
                                         <div class="col-sm-9">
                                             <select name="brand_id" class="form-select select_brand">
-                                            @foreach ($brand as $key => $br)
-                                                @if ($br->id == $product->id)
-                                                    <option selected value="{{$br->id}}">{{$br->brand_name}}</option>
-                                                @else
+                                                <option value="{{$product->brand_id}}">{{$product->brand->brand_name}}</option>
+                                                @foreach ($brand as $br)
                                                     <option value="{{$br->id}}">{{$br->brand_name}}</option>
-                                                @endif
-                                            @endforeach
-                                                {{-- @foreach ($brand as $key => $br)
-                                                    <option value="{{$br->id}}">{{$br->brand_name}}</option>
-                                                @endforeach --}}
+                                                @endforeach
                                             </select>
 
                                         </div>
@@ -54,13 +48,10 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">Chọn danh mục:</label>
                                         <div class="col-sm-9">
-                                            <select class="form-select digits select_2" name="category_id" >
-                                                @foreach ($category as $key => $cate)
-                                                    @if ($cate->id == $product->id)
-                                                        <option selected value="{{$cate->id}}">{{$cate->cate_name}}</option>
-                                                    @else
-                                                        <option value="{{$cate->id}}">{{$cate->cate_name}}</option>
-                                                    @endif
+                                            <select class="form-select digits select_2" name="category_id">
+                                                <option value="{{$product->category_id}}">{{$product->category->cate_name}}</option>
+                                                @foreach ($category as $cate)
+                                                    <option  value="{{$cate->id}}">{{$cate->cate_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -113,10 +104,15 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Đặc trưng</label>
                                                 <div >
-                                                    <input class="form-control"
-                                                    type="text"
-                                                    name="featured"
-                                                    value="{{$product->featured}}">
+                                                    <select class="form-select digits select_2" name="featured" >
+                                                        @if($product->featured == 1)
+                                                            <option value= "0">Sale</option>
+                                                            <option value="1" selected>Không Sale</option>
+                                                        @else
+                                                            <option value= "0" selected >Sale</option>
+                                                            <option value="1">Không Sale</option>
+                                                        @endif
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -186,7 +182,7 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">Nhập tag cho sản phẩm:</label>
                                         <div class="col-sm-9" >
-                                            <input class="form-control"  type="text"  value="{{$product->tag}}" name="tag">
+                                            <input class="form-control" type="text"  value="{{$product->tag}}" name="tag">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -212,15 +208,15 @@
 
                                     </div>
                                     <div class="row">
-                                        <label class="col-sm-3 col-form-label">Trạng thái</label>
+                                        <label class="col-sm-3 col-form-label">Hiển thị</label>
                                         <div class="col-sm-9">
-                                            <select class="form-select digits" name="pro_status" >
-                                                @if($product->pro_status == 1)
-                                                    <option value= "0">0</option>
-                                                    <option value="1" selected>1</option>
+                                            <select class="form-select digits select_2" name="pro_gender" >
+                                                @if($product->pro_gender == 1)
+                                                    <option value= "0">Nam (Sale)</option>
+                                                    <option value="1" selected>Nữ</option>
                                                 @else
-                                                    <option value= "0" selected >0</option>
-                                                    <option value="1">1</option>
+                                                    <option value= "0" selected >Nam (Sale)</option>
+                                                    <option value="1">Nữ</option>
                                                 @endif
                                             </select>
                                         </div>

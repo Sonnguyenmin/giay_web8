@@ -22,7 +22,7 @@
       <div class="col-sm-12">
         <div class="card">
             <div class="card-header pb-0" style="display:flex; justify-content: space-between;">
-                <h3>Nhân viên</h3>
+                <h3>Thông tin</h3>
                 <span style=" margin-top: 3px;">
                     @include('Backend.admin.alert')
               </span>
@@ -30,7 +30,7 @@
 
             <div class="card-body">
                 <a href="{{route('users.create')}}">
-                    <button class="btn btn-primary mb-3" >Thêm nhân viên</button>
+                    <button class="btn btn-primary mb-3" >Thêm Thông tin</button>
                 </a>
                 <div class="table-responsive">
                 <table class="display" id="basic-1">
@@ -39,6 +39,7 @@
                         <th style="width: 20px">STT</th>
                         <th>Tên</th>
                         <th>email</th>
+                        <th>Vai trò</th>
                         <th>Thời gian</th>
                         <th style="width: 120px;">Hành động</th>
                     </tr>
@@ -52,7 +53,10 @@
                             <td style="text-align: center ; width: 20px">{{ $stt++ }}</td>
                             <td style="text-align: center">{{$u->name}}</td>
                             <td style="text-align: center">{{$u->email}}</td>
-                            <td style="text-align: center">{{$u->created_at->format(" d-m-Y")}}</td>
+                                @foreach ($u->roles as $role)
+                                    <td style="text-align: center">{{$role->role_name}}</td>
+                                @endforeach
+                                    <td style="text-align: center">{{$u->created_at->format(" d-m-Y")}}</td>
                             <td>
                             <ul class="action" style="justify-content: center;">
                                 <li class="edit"> <a href="{{route('users.edit',$u->id)}}"><i class="icon-pencil-alt"></i></a></li>

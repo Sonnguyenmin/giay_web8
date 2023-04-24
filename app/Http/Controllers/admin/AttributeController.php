@@ -8,6 +8,13 @@ use App\Models\Attribute;
 
 class AttributeController extends Controller
 {
+
+    private $attr;
+
+    public function __construct(Attribute $attr)//lớp-đối tượng
+    {
+        $this->attr = $attr;//gán biến = đối tượng
+    }
     /**
      * Display a listing of the resource.
      *
@@ -73,22 +80,23 @@ class AttributeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $data = $request->validate(
-        //     [
-        //         'attr_name' => 'required|unique:tbl_attr|max:255',
-        //         'attr_value' => 'required',
-        //     ],
-        //     [
-        //         'attr_name.unique' => 'Tên thương hiệu đã có, xin điền tên khác',
-        //         'attr_name.max' => 'Tên thương hiệu không vượt quá 255 kí tự',
-        //         'attr_value.required' => 'trạng thái là phải có nhé',
-        //     ]
-        // );
-        // $attr = Attribute::find($id);
-        // $attr->attr_name = $data['attr_name'];
-        // $attr->attr_value = $data['attr_value'];
-        // $attr->save();
-        // return redirect()->back()->with('success','cập nhật thành công thuộc tính sản phẩm');
+        $data = $request->validate(
+            [
+                'attr_name' => 'required|unique:tbl_attr|max:255',
+                'attr_value' => 'required',
+            ],
+            [
+                'attr_name.unique' => 'Tên thương hiệu đã có, xin điền tên khác',
+                'attr_name.max' => 'Tên thương hiệu không vượt quá 255 kí tự',
+                'attr_value.required' => 'trạng thái là phải có nhé',
+            ]
+        );
+
+        $this->attr->find($id)->update([
+            'attr_name' => $request->attr_name,
+            'attr_value' => $request->attr_value,
+        ]);
+        return redirect()->back()->with('success','cập nhật thành công thuộc tính sản phẩm');
     }
 
     /**

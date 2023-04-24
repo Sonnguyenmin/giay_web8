@@ -10,9 +10,8 @@ class Brand extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'tbl_brand';
-    protected $fillable = [
-        'brand_name','brand_desc', 'brand_status', 'brand_order'
-    ];
+    protected $primaryKey = 'id';
+    protected $guarded = [];
     public function products(){
         return $this->hasMany(Product::class, 'brand_id');
     }

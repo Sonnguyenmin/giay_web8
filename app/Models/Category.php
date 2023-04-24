@@ -10,9 +10,8 @@ class Category extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'tbl_category';
-    protected $fillable = [
-        'cate_name', 'slug', 'cate_status',
-    ];
+    protected $primaryKey = 'id';
+    protected $guarded = [];
 
     // public function categoryChild()
     // {

@@ -10,9 +10,8 @@ class Attribute extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'tbl_attr';
-    protected $fillable = [
-        'attr_name','attr_value',
-    ];
+    protected $primaryKey = 'id';
+    protected $guarded = [];
 
     public function proAttrs(){
         return $this->hasMany(proAttr::class,'id_product');

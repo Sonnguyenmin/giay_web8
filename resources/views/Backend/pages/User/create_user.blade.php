@@ -56,9 +56,9 @@
                                         <div class="col-sm-9">
                                             <select class="form-select digits selectRole" name="role_id[]" multiple="multiple">
                                                 <option value= ""></option>
-                                                @foreach ($roles as $role)
-                                                    <option value="{{$role->id}}">{{$role->role_name}}</option>
-                                                @endforeach
+                                                    @foreach ($roles as $role)
+                                                        <option value="{{$role->id}}">{{$role->role_name}}</option>
+                                                    @endforeach
                                             </select>
                                         </div>
                                     </div>

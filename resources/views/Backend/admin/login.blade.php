@@ -8,8 +8,8 @@
     {{-- <meta name="description" content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities."> --}}
     {{-- <meta name="keywords" content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app"> --}}
     {{-- <meta name="author" content="pixelstrap"> --}}
-    <link rel="icon" href="{{asset('Backend/assets/images/admin.png')}}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{asset('Backend/assets/images/admin.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('Backend/assets/admin.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('Backend/assets/admin.png')}}" type="image/x-icon">
     <title>Trang Đăng nhập Quản trị Norda</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com/">

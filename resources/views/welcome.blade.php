@@ -10,6 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Norda - Của hàng bán giày sneaker Norda</title>
 
+    <link rel="icon" href="{{asset('Backend/assets/admin.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('Backend/assets/admin.png')}}" type="image/x-icon">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
@@ -35,7 +37,7 @@
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header-section">
+    <header class="header-section"  >
         <div class="header-top">
            <div class="container">
                 <div class="ht-left">
@@ -51,25 +53,18 @@
                     </div>
                 </div>
                 <div class="ht-right">
-                    <a href="" class="login-panel">
+                    @if (Auth::check())
+                    <a href="./account/logout" class="login-panel">
                         <i class="fa fa-user"></i>
-                        Đăng nhập
+                        {{Auth::user()->name}} - Đăng xuất
                     </a>
-                    {{-- <div class="lan-selector">
-                        <select class="language_drop" name="countries" id="countries" style="width: 300px;">
-                            <option value="yt" data-image="img/flag-1.jpg"
-                                data-imagecss="flag yt"
-                                data-title="english">
-                                English
-                            </option>
-                            <option value="yu"
-                                data-image="img/flag-2.jpg"
-                                data-imagecss="flag yu"
-                                data-title="Bangladesh">
-                                German
-                            </option>
-                        </select>
-                    </div> --}}
+                    @else
+                        <a href="./account/login" class="login-panel">
+                            <i class="fa fa-user"></i>
+                            Đăng nhập
+                        </a>
+                    @endif
+
                     <div class="top-social">
                         <a href="{{getConfigValue('Facebook_link')}}"><i class="ti-facebook"></i></a>
                         <a href="{{getConfigValue('youtube_link')}}"><i class="ti-youtube"></i></a>
@@ -110,46 +105,46 @@
                                 </a>
                             </li>
                             <li class="cart-icon">
-                                <a href="">
+                                <a href="./cart">
                                     <i class="icon_bag_alt">
                                     </i>
-                                    <span>{{Cart::count()}}</span>
+                                    <span class="cart-count">{{Cart::count()}}</span>
                                 </a>
                                 <div class="cart-hover">
                                     <div class="select-items">
                                         <table>
                                             <tbody>
                                                 @foreach (Cart::content() as $cart)
-                                                    <tr>
-                                                        <td class="si-pic">
-                                                            <img class="pro_select" src="{{config('app.baseUrl') . $cart->options->images}}" alt="">
-                                                        </td>
-                                                        <td class="si-text">
-                                                            <div class="product-selected">
-                                                                <p style="font-size: 14px">{{number_format($cart->price)}}vnđ x {{$cart->qty}}</p>
-                                                                <h6 style="font-size: 13px">{{$cart->name}}</h6>
-                                                            </div>
-                                                        </td>
-                                                        <td class="si-close">
-                                                            <i class="ti-close" style="font-size: 14px"></i>
-                                                        </td>
-                                                    </tr>
+                                                <tr data-rowId = "{{$cart->rowId}}">
+                                                    <td class="si-pic">
+                                                        <img class="img_detail" src="{{$cart->options->images}}" alt="">
+                                                    </td>
+                                                    <td class="si-text">
+                                                        <div class="product-selected">
+                                                            <p>{{number_format($cart->price)}}đ x {{$cart->qty}}</p>
+                                                            <h6 style="font-size: 12px ">{{$cart->name}}</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td class="si-close">
+                                                        <i class="ti-close"></i>
+                                                    </td>
+                                                </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="select-total">
                                         <span>Tổng:</span>
-                                        <h5>{{Cart::total()}} vnđ</h5>
+                                        <h5 >{{Cart::total()}}đ</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="./cart" class="primary-btn view-card">Xem Giỏ hàng</a>
-                                        <a href="check-out.html" class="primary-btn checkout-btn">Thanh toán</a>
+                                        <a href="./cart" class="primary-btn view-card">Xem giỏ hàng</a>
+                                        <a href="./checkout" class="primary-btn checkout-btn">Thanh toán</a>
                                     </div>
                                 </div>
                             </li>
                             <li class="cart-price">
-                                {{Cart::total()}} vnđ
+                                {{Cart::subtotal()}}đ
                             </li>
                         </ul>
 
@@ -174,9 +169,9 @@
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="{{route('home')}}">Trang chủ</a></li>
-                        <li class=""><a href="{{route('shop')}}">Shop</a></li>
-                        <li><a href="{{route('shop')}}">Thương hiệu </a>
+                        <li class="{{(request()->segment(1) == '') ? 'active' : ''}}"><a href="./">Trang chủ</a></li>
+                        <li class="{{(request()->segment(1) == 'shop') ? 'active' : ''}}"><a href="./shop">Shop</a></li>
+                        <li><a href="">Thương hiệu </a>
                             <ul class="dropdown">
                                 @foreach ($brands as $brand)
                                     <li>
@@ -185,15 +180,16 @@
                                 @endforeach
                            </ul>
                         </li>
-                        <li><a href="blog.html">Tin tức</a></li>
-                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li class="{{(request()->segment(1) == 'blog') ? 'active' : ''}}"><a href="./blog">Tin tức</a></li>
+                        <li class="{{(request()->segment(1) == 'contact') ? 'active' : ''}}"><a href="./contact">Liên hệ</a></li>
                         <li><a href="#">Trang</a>
                             <ul class="dropdown">
-                                <li><a href="blog-details.html">Chi tiết tin tức</a></li>
-                                <li><a href="shopping-cart.html">Giỏ hàng</a></li>
-                                <li><a href="check-out.html">Thanh toán</a></li>
-                                <li><a href="register.html">Đăng ký</a></li>
-                                <li><a href="login.html">Đăng nhập</a></li>
+                                <li><a href="{{route('blog')}}">Chi tiết tin tức</a></li>
+                                <li><a href="./cart">Giỏ hàng</a></li>
+                                <li><a href="./checkout">Thanh toán</a></li>
+                                <li><a href="./myOrder">Đơn hàng của tôi</a></li>
+                                <li><a href="./account/register">Đăng ký</a></li>
+                                <li><a href="./account/login">Đăng nhập</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -205,47 +201,6 @@
     <!-- Header Section  End-->
 
     @yield('content')
-
-
-    <!-- Partner logo Section Begin -->
-    <div class="partner-logo">
-        <div class="container">
-            <div class="logo-carousel owl-carousel">
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="{{asset('Frontend/assets/img/logo-carousel/logo-1.png')}}" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="{{asset('Frontend/assets/img/logo-carousel/logo-1.png')}}" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="{{asset('Frontend/assets/img/logo-carousel/logo-2.png')}}" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="{{asset('Frontend/assets/img/logo-carousel/logo-3.png')}}" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="{{asset('Frontend/assets/img/logo-carousel/logo-4.png')}}" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="{{asset('Frontend/assets/img/logo-carousel/logo-5.png')}}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Partner logo Section end -->
-
     <!-- footer Section Begin -->
     <footer class="footer-section">
         <div class="container">
@@ -340,7 +295,6 @@
     <script src="{{asset('Frontend/assets/js/jquery.dd.min.js')}}"></script>
     <script src="{{asset('Frontend/assets/js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('Frontend/assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('Frontend/assets/js/owlcarousel.min.js')}}"></script>
     <script src="{{asset('Frontend/assets/js/owlcarousel2-filter.min.js')}}"></script>
     <script src="{{asset('Frontend/assets/js/main.js')}}"></script>
 </html>
