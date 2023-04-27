@@ -19,7 +19,7 @@
 <div class="container-fluid">
     <div class="row">
       <!-- Zero Configuration  Starts-->
-      <div class="col-sm-12">
+      <div class="col-sm-7">
         <div class="card">
             <div class="card-header pb-0" style="display:flex; justify-content: space-between;">
                 <h3>Chi tiết đơn hàng </h3>
@@ -66,15 +66,13 @@
             </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-6 col-sm-12">
-            <div class="card">
+      <div class="col-sm-5 ">
+          <div class="card">
               <div class="card-header pb-0">
-                <h3>Thông tin đơn đặt hàng</h3>
+              <h3>Thông tin đơn đặt hàng</h3>
               </div>
               <div class="card-body">
-                <ul class="list-group">
+              <ul class="list-group">
                   <li class="list-group-item"><span style="font-size: 16px; color: #000; padding: 0 6px 0 0">Họ và tên:</span>  {{$order->order_name}}</li>
                   <li class="list-group-item"><span style="font-size: 16px; color: #000; padding: 0 6px 0 0">Email:</span>  {{$order->email}}</li>
                   <li class="list-group-item"><span style="font-size: 16px; color: #000; padding: 0 6px 0 0">Công ty:</span>  {{$order->company_name}}</li>
@@ -87,11 +85,12 @@
                   <li class="list-group-item"><span style="font-size: 16px; color: #000; padding: 0 6px 0 0">Trạng thái:</span>  {{\App\Utilities\Constant::$order_status[$order->status]}}</li>
                   <li class="list-group-item"><span style="font-size: 16px; color: #000; padding: 0 6px 0 0">Phương thức thanh toán:</span>  {{$order->payment_type}}</li>
 
-                </ul>
+              </ul>
               </div>
-            </div>
           </div>
+      </div>
     </div>
+
 </div>
      <!-- Zero Configuration  Ends-->
 @endsection

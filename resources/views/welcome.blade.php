@@ -205,7 +205,7 @@
     <footer class="footer-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="footer-left">
                         <div class="footer-logo">
                             <a href="index.html">
@@ -233,7 +233,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 offset-lg-1">
+                <div class="col-lg-2 ">
                     <div class="footer-widget">
                         <h5>Thông tin</h5>
                         <ul>

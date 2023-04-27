@@ -94,11 +94,8 @@
                                         <i class="icon_heart_alt"></i>
                                     </div>
                                     <ul>
+                                        <li class="quick-view" style="background-color: #e7ab3c"><a style="color: #fff" href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Chi tiết</a></li>
 
-                                        <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Chi tiết</a></li>
-                                        <li class="w-icon"><a href="">
-                                            <i class="fa fa-heart"></i>
-                                        </a></li>
                                     </ul>
                                 </div>
                                 <div class="pi-text">
@@ -134,10 +131,6 @@
                     <h2>Bộ sưu tập Giày norda</h2>
                     <p>Cửa Hàng NORDA là một trong những nơi sưu tầm có khối lượng giày hiếm siêu khủng. Có những mẫu giày cực kì hype được giới sưu tầm săn lùng, thậm chí bạn sẽ bắt gặp nhiều mẫu lạ mới mà hiếm shop nào có. Có những mẫu chỉ có độc nhất 1 đôi. Ngoài ra những mẫu đang rất HOT trên thị trường sneaker về liên tục nên các bạn cứ yên tâm không sợ hết hàng.
                     </p>
-                    {{-- <div class="product-price">
-                        $35.00
-                        <span>/ HanBag</span>
-                    </div> --}}
                 </div>
                 <div class="countdown-timer" id="countdown">
                     <div class="cd-item">
@@ -190,11 +183,8 @@
                                         <i class="icon_heart_alt"></i>
                                     </div>
                                     <ul>
+                                        <li class="quick-view" style="background-color: #e7ab3c"><a style="color: #fff" href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Chi tiết</a></li>
 
-                                        <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Chi tiết</a></li>
-                                        <li class="w-icon"><a href="">
-                                            <i class="fa fa-random"></i>
-                                        </a></li>
                                     </ul>
                                 </div>
                                 <div class="pi-text">
@@ -260,10 +250,8 @@
                                     </div>
                                     <ul>
 
-                                        <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+Chi tiết</a></li>
-                                        <li class="w-icon"><a href="">
-                                            <i class="fa fa-random"></i>
-                                        </a></li>
+                                        <li class="quick-view" style="background-color: #e7ab3c"><a style="color: #fff" href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+Chi tiết</a></li>
+
                                     </ul>
                                 </div>
                                 <div class="pi-text">

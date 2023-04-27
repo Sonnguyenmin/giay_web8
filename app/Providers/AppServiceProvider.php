@@ -36,6 +36,11 @@ use  App\Repositories\User\UserRepository;
 use  App\Service\User\UserServiceInterface;
 use  App\Service\User\UserService;
 
+// use App\Repositories\Customer\CustomerRepositoryInterface;
+// use  App\Repositories\Customer\CustomerRepository;
+// use  App\Service\Customer\CustomerServiceInterface;
+// use  App\Service\Customer\CustomerService;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -121,6 +126,17 @@ class AppServiceProvider extends ServiceProvider
             UserServiceInterface::class,
             UserService::class
         );
+
+        //  //Customer
+        //  $this->app->singleton(
+        //     CustomerRepositoryInterface::class,
+        //     CustomerRepository::class
+        // );
+
+        // $this->app->singleton(
+        //     CustomerServiceInterface::class,
+        //     CustomerService::class
+        // );
 
     }
 

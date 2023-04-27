@@ -84,8 +84,8 @@ class CheckoutController extends Controller
             //01. lấy Url thanh toán VNPay
             $data_url = VNPay::vnpay_create_payment([
                 'vnp_TxnRef' => $order->id, //Id của đơn hàng
-                'vnp_OrderInfo' => 'Sản phẩm lỗi hay không đúng có thể dổi trả không quá 3 ngày', //Mô tả đơn hàng
-                'vnp_Amount' => Cart::total(0, '', '') , //Tổng giá của đơn hàng
+                'vnp_OrderInfo' => 'Sản phẩm lỗi hay không đúng có thể dổi trả không quá 3 ngày',       // Sản phẩm lỗi hay không đúng có thể dổi trả không quá 3 ngày //Mô tả đơn hàng
+                'vnp_Amount' => Cart::total(0,'',''), //Tổng giá của đơn hàng
             ]);
             //02. Chuyển hướng tới URL lấy được
             return redirect()->to($data_url);
@@ -110,7 +110,7 @@ class CheckoutController extends Controller
                 $total = Cart::total();
                 $subtotal = Cart::subtotal();
                 $this->sendEmail($order, $total, $subtotal);
-                
+
                 //Xóa giỏ hàng
                 Cart::destroy();
 
@@ -118,9 +118,11 @@ class CheckoutController extends Controller
                 return redirect('checkout/result')->with('notification', 'THÀNH CÔNG ! Bạn đã thanh toán trực tuyến. Vui lòng kiểm tra email của bạn');
             } else { //Nếu không thành công
                 //Xóa đơn hàng đã thêm vào
-                $this->orderServeice->delete($vnp_TxnRef);
+                $this->orderService->delete($vnp_TxnRef);
+                $this->orderDetailService->delete($vnp_TxnRef);
+                //03. Xóa giỏ hàng
+                Cart::destroy();
                 //Thông báo lỗi
-
                 return redirect('checkout/result')->with('notification', 'Thất bại!: Thanh toán không thành công hoặc bị hủy ');
             }
 

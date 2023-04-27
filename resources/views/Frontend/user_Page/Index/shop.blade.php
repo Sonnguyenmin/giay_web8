@@ -65,11 +65,6 @@
                                             <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">
                                                 + Chi tiết
                                             </a></li>
-                                            <li class="w-icon">
-                                                <a href="">
-                                                    <i class="fa fa-random"></i>
-                                                </a>
-                                            </li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">

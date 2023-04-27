@@ -103,6 +103,54 @@
 
                     </div>
                 </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bd-pink">
+                        <div class="inner">
+                            <h3>{{$settingCount}}</h3>
+                            <p>Thông tin </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bd-blue">
+                        <div class="inner">
+                            <h3>{{$slideCount}}</h3>
+                            <p>Slides</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bd-menu">
+                        <div class="inner">
+                            <h3>{{$menuCount}}</h3>
+                            <p>Menu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bd-order">
+                        <div class="inner" >
+                            <h3>{{$orderCount}} - {{$orderDetailsCount}}</h3>
+                            <p>Đơn hàng - Chi tiết đơn hàng</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -113,210 +161,57 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header border-0">
-                            <div class="d-flex justify-content-between">
-                                <h3 class="card-title">Online Store Visitors</h3>
-                                <a href="javascript:void(0);">View Report</a>
-                            </div>
+                            <h3 class="card-title">Đơn hàng mới</h3>
                         </div>
                         <div class="card-body">
-                            <div class="d-flex">
-                                <p class="d-flex flex-column">
-                                    <span class="text-bold text-lg">820</span>
-                                    <span>Visitors Over Time</span>
-                                </p>
-                                <p class="ml-auto d-flex flex-column text-right">
-                                    <span class="text-success">
-                                        <i class="fas fa-arrow-up"></i> 12.5%
-                                    </span>
-                                    <span class="text-muted">Since last week</span>
-                                </p>
-                            </div>
-                            <div class="position-relative mb-4">
-                                <canvas id="visitors-chart" height="200"></canvas>
-                            </div>
-                            <div class="d-flex flex-row justify-content-end">
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-primary"></i> This Week
-                                </span>
-                                <span>
-                                    <i class="fas fa-square text-gray"></i> Last Week
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header border-0">
-                            <h3 class="card-title">Products</h3>
-                            <div class="card-tools">
-                                <a href="#" class="btn btn-tool btn-sm">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <a href="#" class="btn btn-tool btn-sm">
-                                    <i class="fas fa-bars"></i>
-                                </a>
-                            </div>
+                            <form action="" method="GET" class="form-inline">
+                                <div class="form-group" style="margin-right: 10px">
+                                    <input type="date" name="date_from" class="form-control" >
+                                </div>
+                                <div class="form-group" style="margin-right: 10px">
+                                    <input type="date" name="date_to" class="form-control" >
+                                </div>
+                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            </form>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped table-valign-middle">
                                 <thead>
                                     <tr>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Sales</th>
-                                        <th>More</th>
+                                        <th>Stt</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Địa chỉ</th>
+                                        <th>SĐT</th>
+                                        <th>Đơn hàng</th>
+                                        <th>HTThanh toán</th>
+                                        <th>ngày đặt</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="{{asset('Backend/assets/dist/img/default-150x150.png')}}" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                        Some Product
-                                    </td>
-                                    <td>$13 USD</td>
-                                    <td>
-                                        <small class="text-success mr-1">
-                                        <i class="fas fa-arrow-up"></i>
-                                        12%
-                                        </small>
-                                        12,000 Sold
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-muted">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="{{asset('Backend/assets/dist/img/default-150x150.png')}}" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                        Another Product
-                                    </td>
-                                    <td>$29 USD</td>
-                                    <td>
-                                        <small class="text-warning mr-1">
-                                        <i class="fas fa-arrow-down"></i>
-                                        0.5%
-                                        </small>
-                                        123,234 Sold
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-muted">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="{{asset('Backend/assets/dist/img/default-150x150.png')}}" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                        Amazing Product
-                                    </td>
-                                        <td>$1,230 USD</td>
-                                    <td>
-                                        <small class="text-danger mr-1">
-                                            <i class="fas fa-arrow-down"></i>
-                                            3%
-                                        </small>
-                                        198 Sold
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-muted">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header border-0">
-                        <h3 class="card-title">Products</h3>
-                        <div class="card-tools">
-                            <a href="#" class="btn btn-tool btn-sm">
-                                <i class="fas fa-download"></i>
-                            </a>
-                            <a href="#" class="btn btn-tool btn-sm">
-                                <i class="fas fa-bars"></i>
-                            </a>
+                                    @php
+                                        $stt = 1
+                                    @endphp
+                                    @foreach ($orders as $order)
+                                        <tr>
+                                            <td>{{$stt++}}</td>
+                                            <td>{{$order->order_name}}</td>
+                                            <td>{{$order->town}}</td>
+                                            <td>{{$order->phone}}</td>
+                                            <td >
+                                                @foreach ($order->orderDetails as $orderDetail)
+                                                    <span>- {{$orderDetail->product->pro_name}}</br></span>
+                                                @endforeach
+                                            </td>
+                                            <td>{{$order->payment_type}}</td>
+                                            <td>{{$order->created_at}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-striped table-valign-middle">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Sales</th>
-                                    <th>More</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <img src="{{asset('Backend/assets/dist/img/default-150x150.png')}}" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                    Some Product
-                                </td>
-                                <td>$13 USD</td>
-                                <td>
-                                    <small class="text-success mr-1">
-                                    <i class="fas fa-arrow-up"></i>
-                                    12%
-                                    </small>
-                                    12,000 Sold
-                                </td>
-                                <td>
-                                    <a href="#" class="text-muted">
-                                        <i class="fas fa-search"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="{{asset('Backend/assets/dist/img/default-150x150.png')}}" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                    Another Product
-                                </td>
-                                <td>$29 USD</td>
-                                <td>
-                                    <small class="text-warning mr-1">
-                                    <i class="fas fa-arrow-down"></i>
-                                    0.5%
-                                    </small>
-                                    123,234 Sold
-                                </td>
-                                <td>
-                                    <a href="#" class="text-muted">
-                                        <i class="fas fa-search"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="{{asset('Backend/assets/dist/img/default-150x150.png')}}" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                    Amazing Product
-                                </td>
-                                    <td>$1,230 USD</td>
-                                <td>
-                                    <small class="text-danger mr-1">
-                                        <i class="fas fa-arrow-down"></i>
-                                        3%
-                                    </small>
-                                    198 Sold
-                                </td>
-                                <td>
-                                    <a href="#" class="text-muted">
-                                        <i class="fas fa-search"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

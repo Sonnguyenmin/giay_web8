@@ -1338,6 +1338,26 @@
   color: #ffffff;
 }
 
+.bd-pink {
+    background-color: #d01660 !important;
+    color: #ffffff;
+}
+
+.bd-blue {
+    background-color: #52d4e8 !important;
+    color: #ffffff;
+}
+
+.bd-menu {
+    background-color: #cfd210 !important;
+    color: #ffffff;
+}
+
+.bd-order {
+    background-color: #a14206 !important;
+    color: #ffffff;
+}
+
 .bg-light-danger {
   background-color: rgba(220, 8, 8, 0.2) !important;
   color: #ffffff;
@@ -9222,6 +9242,54 @@ input[type=file] {
 .switch-outline .switch input:checked + .switch-state.bg-danger:before {
   background-color: #DC0808;
 }
+
+.switch-outline .switch-state.bd-pink {
+    border: 1px solid var(--theme-default);
+    background-color: transparent !important;
+  }
+  .switch-outline .switch input:checked + .switch-state.bd-pink {
+    background-color: transparent !important;
+    border: 1px solid var(--theme-default);
+  }
+  .switch-outline .switch input:checked + .switch-state.bd-pink:before {
+    background-color: var(--theme-default);
+  }
+
+.switch-outline .switch-state.bd-blue  {
+    border: 1px solid var(--theme-default);
+    background-color: transparent !important;
+  }
+  .switch-outline .switch input:checked + .switch-state.bd-blue  {
+    background-color: transparent !important;
+    border: 1px solid var(--theme-default);
+  }
+  .switch-outline .switch input:checked + .switch-state.bd-blue :before {
+    background-color: var(--theme-default);
+  }
+
+.switch-outline .switch-state.bd-menu  {
+    border: 1px solid var(--theme-default);
+    background-color: transparent !important;
+  }
+  .switch-outline .switch input:checked + .switch-state.bd-menu  {
+    background-color: transparent !important;
+    border: 1px solid var(--theme-default);
+  }
+  .switch-outline .switch input:checked + .switch-state.bd-menu :before {
+    background-color: var(--theme-default);
+  }
+
+  .switch-outline .switch-state.bd-order  {
+    border: 1px solid var(--theme-default);
+    background-color: transparent !important;
+  }
+  .switch-outline .switch input:checked + .switch-state.bd-order  {
+    background-color: transparent !important;
+    border: 1px solid var(--theme-default);
+  }
+  .switch-outline .switch input:checked + .switch-state.bd-order :before {
+    background-color: var(--theme-default);
+  }
 .switch-outline .switch-state.bg-primary {
   border: 1px solid var(--theme-default);
   background-color: transparent !important;

@@ -2,7 +2,7 @@
     use App\Http\Controllers\Check\AdminController;
     use App\Http\Controllers\Check\BackendController;
     use App\Http\Controllers\Check\LogoutController;
-    
+
 
     /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@
 */
     Route::get('/Trang-quản-trị',[AdminController::class,'admin'])->name('admin');
 
-    // Đăng nhập và xử lý đăng nhập
+    // Đăng nhập và xử lý đăng nhập 
     Route::get('/Đăng-nhập',[BackendController::class,'login'])->name('login');
 
     Route::post('/Đăng-nhập',[BackendController::class,'post_login']);

@@ -255,7 +255,6 @@
     const product_women = $(".product-slider.women");
     const product_sale = $(".product-slider.sale");
 
-
     $('.filter-control').on('click','.item', function(){
         const $item = $(this);
         const filter = $item.data('tag');
@@ -354,9 +353,6 @@ function removeCart(rowId) {
             var cart_existItem = cart_tbody.find("tr" + "[data-rowId='" + rowId + "']");
 
             cart_existItem.remove();
-
-
-            //alert('Xóa thành công !\nSản Phẩm: ' +response['cart'].name);
             console.log(response);
         },
         error: function(response) {

@@ -87,25 +87,20 @@
                                     @endif
                             </h5>
                             <div class="pd-size-choose">
-                               <form action="">
-                                    @foreach(array_unique(array_column($products->attrs->toArray(), 'attr_value')) as $productSize)
-                                        <div class="sc-item">
-                                            <input type="radio" id="{{$productSize}}">
-                                            <label for="{{$productSize}}">{{$productSize}}</label>
-                                        </div>
-                                    @endforeach
-                               </form>
+                                @foreach(array_unique(array_column($products->attrs->toArray(), 'attr_value')) as $productSize)
+                                    <div class="sc-item">
+                                        <input type="radio" id="{{$productSize}}">
+                                        <label for="{{$productSize}}">{{$productSize}}</label>
+                                    </div>
+                                @endforeach
                             </div>
                             <div class="quantity">
                                 <div class="quantity">
-                                    {{-- <div class="pro-qty">
-                                        <input name="qty" type="text" value="1">
-                                    </div> --}}
-                                    <button type="button" class="primary-btn pd-cart"> <a style="color: #fff" href="javascript:addCart({{$products->id}})">Thêm giỏ hàng</a></button>
+                                    <a style="color: #fff " href="javascript:addCart({{$products->id}})"><button type="button" class="primary-btn pd-cart"> Thêm giỏ hàng</button></a>
                                 </div>
                             </div>
                             <ul class="pd-tags">
-                                <li> <span>DANH MỤC</span>: {{$products->category->cate_name}}</li>
+                                <li><span>DANH MỤC</span>: {{$products->category->cate_name}}</li>
                                 <li><span>TAGS</span>:
                                    {{$products->tag}}
                                 </li>
@@ -151,7 +146,7 @@
                                             </td>
                                             <td >
                                                 <div class="pd-rating">
-                                                    @for($i = 1; $i <=5; $i++)
+                                                    @for($i = 1; $i<=5; $i++)
                                                         @if($i <= $products->avgRating)
                                                             <i class="fa fa-star"></i>
                                                         @else

@@ -57,7 +57,7 @@ class FrontendController extends Controller
         $categories = $this->CategoryService->all();
         return view('Frontend.user_Page.Index.Contact',compact('categories', 'brands'));
     }
- 
+
     public function postContact(Request $request) {
         Mail::send('Frontend.user_Page.Index.mailContact',[
             'name' => $request->name,

@@ -46,7 +46,7 @@ class AccountController extends Controller
         $remember = $request->remember;
 
         if (Auth::attempt($credentials, $remember)) {
-           return redirect()->intended();//Mặc định là:trang chủ
+           return redirect()->route('home');//Mặc định là:trang chủ
         }
         else {
             return back()->with('notification', 'Error: Email hoặc Password không đúng mời nhập lại');

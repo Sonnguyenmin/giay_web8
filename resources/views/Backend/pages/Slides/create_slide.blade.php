@@ -53,13 +53,7 @@
                                     <div class="row">
                                         <label class="col-sm-3 col-form-label">Hình ảnh</label>
                                         <div class="col-sm-9">
-                                        <input class="form-control"  type="file"  name="image_path" >
-                                        {{-- @error('image_path')
-                                            is_invalid
-                                        @enderror
-                                        @error('image_path')
-                                            <div class="alert alert-danger">{{$message}}</div>
-                                        @enderror --}}
+                                        <input class="form-control"  type="file"  name="image_path">
                                         </div>
                                     </div>
                                 </div>
