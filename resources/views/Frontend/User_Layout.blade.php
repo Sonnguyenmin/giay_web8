@@ -95,11 +95,10 @@
                                     </div>
                                     <ul>
                                         <li class="quick-view" style="background-color: #e7ab3c"><a style="color: #fff" href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Chi tiết</a></li>
-
                                     </ul>
                                 </div>
                                 <div class="pi-text">
-                                    <div class="category-name">
+                                    <div class="catagory-name">
                                         {{$product->category->cate_name}}
                                     </div>
                                     <a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">
@@ -168,7 +167,6 @@
                             <li class="item" data-tag=".Adidas" data-category="men">Adidas</li>
                             <li class="item" data-tag=".Jordan" data-category="men">Jordan</li>
                             <li class="item" data-tag=".Yeezy" data-category="men">Yeezy</li>
-
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel men">
@@ -188,7 +186,7 @@
                                     </ul>
                                 </div>
                                 <div class="pi-text">
-                                    <div class="category-name">
+                                    <div class="catagory-name">
                                         {{$product->category->cate_name}}
                                     </div>
                                     <a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">
@@ -255,7 +253,7 @@
                                     </ul>
                                 </div>
                                 <div class="pi-text">
-                                    <div class="category-name">
+                                    <div class="catagory-name">
                                         {{$product->category->cate_name}}
                                     </div>
                                     <a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">

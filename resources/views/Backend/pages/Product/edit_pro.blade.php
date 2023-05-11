@@ -159,7 +159,7 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">Hình ảnh</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control"  type="file"  name="feature_image">
+                                            <input class="form-control" type="file" name="feature_image">
                                         </div>
                                         <label class="col-sm-3 col-form-label"></label>
                                         <div class="col-sm-9">

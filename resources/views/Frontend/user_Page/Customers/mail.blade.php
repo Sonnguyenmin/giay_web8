@@ -111,6 +111,7 @@
                             <thead>
                             <tr>
                                 <th style="padding: 5px 0;">SẢN PHẨM</th>
+                                <th style="padding: 5px 0;">KÍCH THƯỚC</th>
                                 <th style="padding: 5px 20px 5px 0; text-align: right;">TỔNG</th>
                             </tr>
                             </thead>
@@ -119,6 +120,9 @@
                                 <tr>
                                     <td style="border-top: 1px solid #dee2e6; padding: 5px 0;">
                                         {{$orderDetail->product->pro_name . '(x' . $orderDetail->qty . ')'}}
+                                    </td>
+                                    <td style="border-top: 1px solid #dee2e6; padding: 5px 0;">
+                                        Size: {{$orderDetail->size}}
                                     </td>
                                     <td style="border-top: 1px solid #dee2e6; padding: 5px 20px 5px 0; text-align: right;">
                                         {{number_format($orderDetail->total)}}đ

@@ -10,9 +10,6 @@ class ProAttr extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'pro_attrs';
-    protected $fillable = [
-        'id_product', 'id_attr'
-    ];
-
-    
+    protected $primaryKey = 'id';
+    protected $guarded = [];
 }

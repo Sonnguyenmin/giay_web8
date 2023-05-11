@@ -11,7 +11,9 @@
     use App\Http\Controllers\admin\PermissionController;
     use App\Http\Controllers\admin\OrderController;
     use App\Http\Controllers\admin\StatisticalController;
-
+    use App\Http\Controllers\admin\ProductImageController;
+    use App\Http\Controllers\admin\myAccountController;
+    use App\Http\Controllers\admin\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +48,9 @@
 
     Route::resource('/order', OrderController::class)->middleware('can:order-list');
 
-    Route::resource('/order', OrderController::class)->middleware('can:order-list');
-
     Route::resource('/Statistical', StatisticalController::class)->middleware('can:statistical-list');
+
+    Route::resource('/ProductImage', ProductImageController::class)->middleware('can:productImage-list');
+
 
 ?>

@@ -26,7 +26,7 @@ class CreateTblProduct extends Migration
             $table->text('pro_content');
             $table->text('pro_desc');
             $table->string('slug');
-            $table->integer('pro_status');
+            $table->integer('pro_gender');
             $table->timestamps();
         });
     }

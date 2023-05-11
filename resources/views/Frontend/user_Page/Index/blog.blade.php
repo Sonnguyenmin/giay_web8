@@ -8,7 +8,6 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="{{route('home')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                    <a href="{{route('shop')}}">shop</a>
                     <span>Tin tức</span>
                 </div>
             </div>

@@ -58,6 +58,7 @@ class CheckoutController extends Controller
                 'order_id' => $order->id,
                 'product_id' => $cart->id,
                 'qty' => $cart->qty,
+                'size' => $cart->options->size,
                 'amount' => $cart->price,
                 'total' => $cart->price * $cart->qty,
             ];
@@ -69,7 +70,7 @@ class CheckoutController extends Controller
             //Gửi email
             $total = Cart::total();
             $subtotal = Cart::subtotal();
-
+            
             $this->sendEmail($order, $total, $subtotal);
 
             //03. Xóa giỏ hàng

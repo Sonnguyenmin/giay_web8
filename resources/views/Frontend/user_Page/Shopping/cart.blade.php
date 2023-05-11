@@ -28,6 +28,7 @@
                                     <th>Hình ảnh</th>
                                     <th class="p-name">Tên sản phẩm</th>
                                     <th>Giá</th>
+                                    <th>Size</th>
                                     <th>Số lượng</th>
                                     <th>Tổng tiền</th>
                                     <th>
@@ -47,6 +48,7 @@
                                             <h5 >{{$cart->name}}</h5>
                                         </td>
                                         <td class="p-price first-row">{{number_format($cart->price)}}đ</td>
+                                        <td class="p-price first-row"> {{$cart->options->size}} </td>
                                         <td class="qua-col first-row">
                                             <div class="quantity">
                                                 <div class="pro-qty">

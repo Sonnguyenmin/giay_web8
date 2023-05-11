@@ -62,9 +62,7 @@
                                             <i class="icon_heart_alt"></i>
                                         </div>
                                         <ul>
-                                            <li class="quick-view"><a href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">
-                                                + Chi tiết
-                                            </a></li>
+                                            <li class="quick-view" style="background-color: #e7ab3c"><a style="color: #fff" href="{{route('details.product',['slug'=>$product->slug, 'id' =>$product->id])}}">+ Chi tiết</a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">

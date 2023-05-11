@@ -119,7 +119,7 @@
                     <div class="small-box bd-blue">
                         <div class="inner">
                             <h3>{{$slideCount}}</h3>
-                            <p>Slides</p>
+                            <p>Slide</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
@@ -130,8 +130,8 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bd-menu">
                         <div class="inner">
-                            <h3>{{$menuCount}}</h3>
-                            <p>Menu</p>
+                            <h3>{{number_format($profit)}} đ</h3>
+                            <p>Doanh thu theo năm</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
@@ -160,8 +160,8 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header border-0">
-                            <h3 class="card-title">Đơn hàng mới</h3>
+                        <div class="card-header border-0" style="display:flex; align-item: center" >
+                            <h3 style="margin-right: 6px" class="card-title">Đơn hàng tiền mặt</h3> - <h3 style="margin-left: 6px; color: #0dcaf0" class="card-title">Doanh thu : {{number_format($subTotal)}} đ</h3>
                         </div>
                         <div class="card-body">
                             <form action="" method="GET" class="form-inline">
@@ -199,7 +199,60 @@
                                             <td>{{$order->phone}}</td>
                                             <td >
                                                 @foreach ($order->orderDetails as $orderDetail)
-                                                    <span>- {{$orderDetail->product->pro_name}}</br></span>
+                                                    <span>- {{$orderDetail->product->pro_name}} + size:{{$orderDetail->size}}</br></span>
+                                                @endforeach
+                                            </td>
+                                            <td>{{$order->payment_type}}</td>
+                                            <td>{{$order->created_at}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header border-0" style="display:flex; align-item: center" >
+                            <h3 style="margin-right: 6px" class="card-title">Đơn hàng thanh toán trực tuyến</h3> - <h3 style="margin-left: 6px; color: #00e49f" class="card-title">Doanh thu : {{number_format($totalPayment)}} đ</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="GET" class="form-inline">
+                                <div class="form-group" style="margin-right: 10px">
+                                    <input type="date" name="date_from" class="form-control" >
+                                </div>
+                                <div class="form-group" style="margin-right: 10px">
+                                    <input type="date" name="date_to" class="form-control" >
+                                </div>
+                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            </form>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-striped table-valign-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Stt</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Địa chỉ</th>
+                                        <th>SĐT</th>
+                                        <th>Đơn hàng</th>
+                                        <th>HTThanh toán</th>
+                                        <th>ngày đặt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $stt = 1
+                                    @endphp
+                                    @foreach ($orderPayment as $order)
+                                        <tr>
+                                            <td>{{$stt++}}</td>
+                                            <td>{{$order->order_name}}</td>
+                                            <td>{{$order->town}}</td>
+                                            <td>{{$order->phone}}</td>
+                                            <td >
+                                                @foreach ($order->orderDetails as $orderDetail)
+                                                    <span>- {{$orderDetail->product->pro_name}} + size:{{$orderDetail->size}}</br></span>
                                                 @endforeach
                                             </td>
                                             <td>{{$order->payment_type}}</td>

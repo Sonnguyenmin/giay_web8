@@ -24,6 +24,7 @@ class CreateTblOrder extends Migration
             $table->string('town');
             $table->string('email');
             $table->integer('phone');
+            $table->string('payment_type');
             $table->timestamps();
         });
     }

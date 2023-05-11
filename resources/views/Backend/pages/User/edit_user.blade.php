@@ -45,21 +45,13 @@
                                             <input class="form-control" type="text" name="email" value="{{$user->email}}">
                                         </div>
                                     </div>
-
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-3 col-form-label">Password</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control" type="password"  name="password" placeholder="Nhập Password" >
-                                            </div>
-                                    </div>
                                     <div class="row">
                                         <label class="col-sm-3 col-form-label">Chọn vai trò:</label>
                                         <div class="col-sm-9">
                                             <select class="form-select digits selectRole" name="role_id[]" multiple="multiple">
                                                 <option value= ""></option>
                                                 @foreach ($roles as $role)
-                                                    <option
-                                                    {{$roleOfUser->contains('id', $role->id) ? 'selected' : ''}}
+                                                        <option {{$roleOfUser->contains('id', $role->id) ? 'selected' : ''}}
                                                     value="{{$role->id}}">{{$role->role_name}}</option>
                                                 @endforeach
                                             </select>

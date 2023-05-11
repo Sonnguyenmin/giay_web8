@@ -63,7 +63,7 @@
         items: 4,
         dots: true,
         navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
-        smartSpeed: 1200,
+        smartSpeed: 2000,
         autoHeight: false,
         autoplay: true,
         responsive: {
@@ -287,10 +287,12 @@
 })(jQuery);
 
 function addCart(productId){
+    var productSize = $('.pd-size-choose .sc-item label.active').text();
+    console.log(291, productSize);
     $.ajax({
         type: "GET",
         url: "cart/add",
-        data: {productId: productId},
+        data: {productId: productId, productSize: productSize},
         success: function(response) {
             $('.cart-count').text(response['count']);
             $('.cart-price').text(response['total']+ 'đ');
@@ -381,8 +383,6 @@ function destroyCart() {
 
             $('.subtotal span').text('0' + 'đ');
             $('.cart-total span').text('0' + 'đ');
-
-
             alert('Xóa thành công !\nSản Phẩm: ' + response['cart'].name);
             console.log(response);
         },
@@ -400,7 +400,7 @@ function updateCart(rowId, qty) {
         url: "cart/update",
         data: {rowId: rowId, qty: qty},
         success: function(response) {
-            //Xử lý phần cart hover ( trang welcome-pade)
+            //Xử lý phần cart hover ( trang welcome-page)
             $('.cart-count').text(response['count']);
             $('.cart-price').text(response['total']+ 'đ' );
             $('.select-total h5').text(response['total'] + 'đ');

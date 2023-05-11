@@ -224,10 +224,20 @@ ol {
 	font-size: 14px;
 	font-weight: 700;
 	text-transform: uppercase;
-	padding: 13px 45px 11px;
+	padding: 12.6px 16px;
 	cursor: pointer;
 }
 
+.site {
+	color: #ffffff;
+	background: #0d6efd;
+	border: 1px solid #0d6efd;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 13px 45px 11px;
+	cursor: pointer;
+}
 /* Preloder */
 
 #preloder {
@@ -2203,6 +2213,18 @@ ol {
 
 .product-details .pd-desc {
 	margin-bottom: 24px;
+}
+
+
+.product-details .pd-sku {
+	margin-bottom: 24px;
+    font-size: 18px;
+    color: #54ae04;
+}
+
+.product-details .pd-sku span {
+	color: #ae0252;
+    font-size: 16px;
 }
 
 .product-details .pd-desc p {

@@ -77,7 +77,14 @@
             </li>
         </ul>
     </li>
-
+    <li class="sidebar-list">
+        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="shopping-bag"></i><span>Ảnh Sản phẩm</span> </a>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href="{{route('ProductImage.index')}}">Ảnh sản phẩm</a>
+            </li>
+        </ul>
+    </li>
     <li class="sidebar-main-title">
         <div>
             <h4 class="lan">Thương mại</h4>

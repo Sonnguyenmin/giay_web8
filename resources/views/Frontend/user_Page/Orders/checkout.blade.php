@@ -91,11 +91,11 @@
                             <h4>Đơn đặt hàng của bạn</h4>
                             <div class="order-total">
                                 <ul class="order-table">
-                                    <li>Sản phẩm <span>Giá tiền</span></li>
+                                    <li>Sản phẩm <span>Giá tiền</span> </li>
 
                                     @foreach ($carts as $cart)
                                         <li class="fw-normal">
-                                            {{$cart->name}} x {{$cart->qty}}
+                                            {{$cart->name}} x {{$cart->qty}} - Size: {{$cart->options->size}}
                                             <span>{{number_format($cart->price * $cart->qty) }}đ</span>
                                         </li>
                                     @endforeach

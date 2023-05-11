@@ -20,7 +20,6 @@ class CreateTblOrderDetails extends Migration
             $table->integer('qty');
             $table->double('amount');
             $table->double('total');
-
             $table->timestamps();
         });
     }

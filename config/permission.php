@@ -13,7 +13,8 @@
             'list-role' => 'role_list',
             'list-permission' => 'permission_list',
             'list-order' => 'order_list',
-            'list-statistical' => 'statistical_list'
+            'list-statistical' => 'statistical_list',
+            'list-productImage' => 'productImage_list'
         ],
         'table_module' => [
             'category',
@@ -27,7 +28,8 @@
             'role',
             'permission',
             'order',
-            'statistical'
+            'statistical',
+            'productImage',
         ],
         'module_inner' => [
             'list',

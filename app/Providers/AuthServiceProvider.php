@@ -63,5 +63,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('statistical-list', function (User $user) {
             return $user->checkPermissionAccess(config('permission.access.list-statistical'));
         });
+        Gate::define('productImage-list', function (User $user) {
+            return $user->checkPermissionAccess(config('permission.access.list-productImage'));
+        });
     }
 }

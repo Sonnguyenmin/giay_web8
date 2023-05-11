@@ -3,8 +3,8 @@
     use App\Http\Controllers\User\ShopController;
     use App\Http\Controllers\User\CartController;
     use App\Http\Controllers\User\CheckoutController;
+    use App\Http\Controllers\User\myAccountUserController;
     use App\Http\Controllers\User\AccountController;
-
     /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +15,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+    // Route::get('/', function (\App\Repositories\Product\ProductRepositoryInterface $productRepository){
+    //     return $productRepository->all();
+    // });
+
+    // Route::get('/', function (\App\Repositories\Product\ProductRepositoryInterface $productRepository){
+    //     return $productRepository->find(50);
+    // });
+
     Route::get('/',[FrontendController::class,'index']);
 
     Route::get('/',[FrontendController::class,'index'])->name('home');
@@ -56,7 +65,10 @@
         Route::post('/register', [AccountController::class, 'postRegister']);
     });
     Route::prefix('myOrder')->middleware('CheckMemberLogin')->group(function(){
-        Route::get('/', [AccountController::class, 'myOrder']);
+        Route::get('/', [AccountController::class, 'myOrder'])->name('myOrder');
         Route::get('{id}', [AccountController::class, 'myOrderShow']);
+        Route::post('cancel/{id}', [AccountController::class, 'cancel'])->name('myOrder.cancel');
+
     });
+    Route::resource('/MyAccount', myAccountUserController::class)->middleware('CheckMemberLogin');
 ?>

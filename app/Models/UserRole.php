@@ -10,8 +10,7 @@ class UserRole extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'role_user';
-    protected $fillable = [
-        'user_id', 'role_id'
-    ];
+    protected $primaryKey = 'id';
+    protected $guarded = [];
 }
 

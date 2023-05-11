@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('Frontend/assets/css/jquery-ui.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('Frontend/assets/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('Frontend/assets/css/style.css')}}" type="text/css">
+    @yield('css')
 </head>
 
 <body>
@@ -121,7 +122,8 @@
                                                     </td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
-                                                            <p>{{number_format($cart->price)}}đ x {{$cart->qty}}</p>
+                                                            <p>{{number_format($cart->price)}}đ x {{$cart->qty}} - <span>size: {{$cart->options->size}}</span></p>
+
                                                             <h6 style="font-size: 12px ">{{$cart->name}}</h6>
                                                         </div>
                                                     </td>
@@ -185,6 +187,7 @@
                         <li><a href="#">Trang</a>
                             <ul class="dropdown">
                                 <li><a href="{{route('blog')}}">Chi tiết tin tức</a></li>
+                                <li><a href="{{route('MyAccount.index')}}">Tài khoản của tôi</a></li>
                                 <li><a href="./cart">Giỏ hàng</a></li>
                                 <li><a href="./checkout">Thanh toán</a></li>
                                 <li><a href="./myOrder">Đơn hàng của tôi</a></li>
@@ -297,4 +300,7 @@
     <script src="{{asset('Frontend/assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('Frontend/assets/js/owlcarousel2-filter.min.js')}}"></script>
     <script src="{{asset('Frontend/assets/js/main.js')}}"></script>
+    @yield('js')
 </html>
+
+

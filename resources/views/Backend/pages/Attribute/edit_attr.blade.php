@@ -1,4 +1,4 @@
-{{-- @extends('ADmin.admin_layout')
+@extends('AdminLayout')
 @section('admin_content')
 <div class="container-fluid">
     <div class="page-title">
@@ -36,17 +36,13 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">Tên thuộc tính</label>
                                         <div class="col-sm-9">
-                                            <select class="form-select digits" name="attr_name" id="InputName">
-                                                @foreach ($attr as $attrs)
-                                                    <option value="{{$attrs->attr_name}}">{{$attrs->attr_name}}</option>
-                                                @endforeach
-                                            </select>
+                                            <input class="form-control " type="text" value="{{$attr->attr_name}}"  name="attr_name">
                                         </div>
                                     </div>
                                     <div class="row value1" >
                                         <label class="col-sm-3 col-form-label pt-0">Giá trị</label>
                                         <div class="col-sm-9">
-                                            <input id="slug1" class="form-control " type="color" value="{{$attr->attr_value}}"  name="attr_value">
+                                            <input class="form-control " type="text" value="{{$attr->attr_value}}"  name="attr_value">
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +50,7 @@
                         </div>
                         <div class="card-footer text-end">
                             <div class="col-sm-9 offset-sm-3">
-                                <button class="btn btn-primary" name="add_properties" type="submit">Cập nhật</button>
+                                <button class="btn btn-primary" type="submit">Cập nhật</button>
                                 <a  href="{{route('attribute.index')}}">
                                     <input class="btn btn-light" style="width: 136px;" value="Trở lại">
                                 </a>
@@ -66,30 +62,4 @@
         </div>
     </div>
 </div>
-<script src="{{asset('public/Backend/assets/js/jquery-3.6.0.min.js')}}"></script>
-<script>
-    $('#InputName').change(function(event){
-        var _ip = $('#InputName').val();
-        if(_ip == 'size'){
-            $('.value2').show();
-            $('#slug2').attr({
-                name: 'properties_value',
-            });
-            $('.value1').hide();
-            $('#slug1').attr({
-                name: '',
-            });
-        }
-        else{
-            $('.value1').show();
-            $('#slug1').attr({
-                name: 'properties_value',
-            });
-            $('.value2').hide();
-            $('#slug2').attr({
-                name: '',
-            });
-        }
-    })
-</script>
-@endsection --}}
+@endsection

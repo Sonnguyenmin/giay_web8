@@ -24,7 +24,7 @@ class Constant
         self::order_status_ReceiveOrders => 'Nhận đơn đặt hàng',
         self::order_status_Unconfirmed => 'Chưa được xác nhận',
         self::order_status_Confirmed => 'Đã xác nhận',
-        self::order_status_Paid => 'Hoàn trả',
+        self::order_status_Paid => 'Hoàn trả Đơn hàng khi có sai sót',
         self::order_status_Processing => 'Đang Xử  lý',
         self::order_status_Shipping => 'Đang chuyển hàng',
         self::order_status_Finish => 'Hoàn thành',

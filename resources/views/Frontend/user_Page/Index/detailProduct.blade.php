@@ -67,6 +67,9 @@
                                 @endfor
                                 <span>{{count($products->productComments)}}</span>
                             </div>
+                            <div class="pd-sku">
+                                <span>mã SP:</span> {{$products->Sku}}
+                            </div>
                             <div class="pd-desc">
                                 <p>{{$products->pro_content}}</p>
                                 <h4>
@@ -110,6 +113,7 @@
                 </div>
 
 {{-- Thông tin sản phẩm --}}
+{{-- loại bỏ các giá trị trùng lặp khỏi một mảng. Nếu hai hoặc nhiều giá trị mảng giống nhau, giá trị đầu tiên sẽ được giữ lại và giá trị còn lại sẽ bị xóa. --}}
                 <div class="product-tab">
                     <div class="tab-item">
                         <ul class="nav" role="tablist">
@@ -339,7 +343,5 @@
         </div>
     </div>
 </div>
-
 <!-- Related Product Section End -->
-
 @stop

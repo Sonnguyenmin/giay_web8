@@ -10,7 +10,6 @@ class Setting extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'tbl_setting';
-    protected $fillable = [
-       'config_key','config_value', 'type'
-    ];
+    protected $primaryKey = 'id';
+    protected $guarded = [];
 }

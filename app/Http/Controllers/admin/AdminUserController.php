@@ -65,7 +65,6 @@ class AdminUserController extends Controller
                 'email.unique' => 'email thành viên đã có, xin điền email khác',
                 'email.required' => 'email thành viên là bắt buộc',
                 'password' => 'password thành viên là bắt buộc',
-
             ]
         );
         try{
@@ -119,19 +118,6 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $data = $request->validate(
-        //     [
-        //         'name' => 'required|unique:User|max:255',
-        //         'email' => 'required',
-        //         'password' => 'required',
-        //     ],
-        //     [
-        //         'name.unique' => 'Tên thành viên đã có, xin điền tên khác',
-        //         'email.unique' => 'email thành viên đã có, xin điền email khác',
-        //         'password.required' => 'password thành viên là bắt buộc',
-
-        //     ]
-        // );
         try
         {
             DB::beginTransaction();

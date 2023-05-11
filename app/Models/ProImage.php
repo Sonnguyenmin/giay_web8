@@ -10,7 +10,10 @@ class ProImage extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'tbl_pro_image';
-    protected $fillable = [
-      'image_path','image_name','product_id'
-    ];
+    protected $primaryKey = 'id';
+    protected $guarded = [];
+
+    public function products() {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }

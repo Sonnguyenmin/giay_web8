@@ -10,9 +10,8 @@ class Role extends Model
     use HasFactory;
     public $timestamp = true;
     protected $table = 'roles';
-    protected $fillable = [
-        'role_name','display_name'
-    ];
+    protected $primaryKey = 'id';
+    protected $guarded = [];
 
     public function permission(){
         return $this->belongsToMany(Permission::class, 'permission_role' , 'role_id' ,'permission_id');

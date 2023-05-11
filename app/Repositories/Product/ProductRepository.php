@@ -60,7 +60,6 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     {
         $products = Brand::where('brand_name', $brandName)->first()->products->toQuery();
         $products = $this->sortAndPaginate($products, $request);
-
         return $products;
     }
 

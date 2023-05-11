@@ -27,6 +27,7 @@
                                 <th>Hình ảnh</th>
                                 <th class="p-name">ID</th>
                                 <th>Sản Phẩm</th>
+                                <th>Kích thước</th>
                                 <th>Giá tiền</th>
                                 <th>Chi tiết</th>
                             </tr>
@@ -47,10 +48,13 @@
                                         </h5>
                                     </td>
                                     <td class="total-price first-row">
+                                        {{$order->orderDetails->size}}
+                                    </td>
+                                    <td class="total-price first-row">
                                         {{number_format(array_sum(array_column($order->orderDetails->toArray(), 'total')))}}đ
                                     </td>
                                     <td class="first-row">
-                                    <a href="./myOrder/{{$order->id}}" class="btn">Chi tiết</a>
+                                        <a href="./myOrder/{{$order->id}}" class="btn">Chi tiết</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -61,6 +65,8 @@
         </div>
     </div>
 </section>
+
 <!-- Shopping Cart Section End -->
 @stop
+
 

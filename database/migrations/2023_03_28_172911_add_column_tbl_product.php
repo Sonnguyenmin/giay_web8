@@ -17,6 +17,7 @@ class AddColumnTblProduct extends Migration
             $table->integer('qty')->nullable();
             $table->string('Sku')->nullable();
             $table->string('weight')->nullable();
+            $table->string('tag')->nullable();
             $table->boolean('featured');
         });
     }

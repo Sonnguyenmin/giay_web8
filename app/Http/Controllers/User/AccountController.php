@@ -87,6 +87,12 @@ class AccountController extends Controller
         return view('Frontend.user_Page.Orders.myOrder',  compact('brands', 'categories', 'orders'));
     }
 
+    // public function cancel($id) {
+    //     $order = $this->orderService->find($id)->delete();
+    //     $order->update(['status'=> Constant::order_status_Cancel]);
+    //     return redirect()->route('myOrder')->with(['message' => 'cancel success']);
+    // }
+
     public function myOrderShow($id) {
         $brands = $this->BrandService->all();
         $categories = $this->CategoryService->all();

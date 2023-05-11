@@ -53,10 +53,12 @@
                             <td style="text-align: center ; width: 20px">{{ $stt++ }}</td>
                             <td style="text-align: center">{{$u->name}}</td>
                             <td style="text-align: center">{{$u->email}}</td>
+                            <td style="text-align: center">
                                 @foreach ($u->roles as $role)
-                                    <td style="text-align: center">{{$role->role_name}}</td>
+                                   <span>{{$role->role_name}}</span>,
                                 @endforeach
-                                    <td style="text-align: center">{{$u->created_at->format(" d-m-Y")}}</td>
+                            </td>
+                            <td style="text-align: center">{{$u->created_at->format(" d-m-Y")}}</td>
                             <td>
                             <ul class="action" style="justify-content: center;">
                                 <li class="edit"> <a href="{{route('users.edit',$u->id)}}"><i class="icon-pencil-alt"></i></a></li>

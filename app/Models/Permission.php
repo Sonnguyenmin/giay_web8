@@ -9,9 +9,8 @@ class Permission extends Model
 {
     public $timestamp = true;
     protected $table = 'permissions';
-    protected $fillable = [
-        'per_name', 'display_name' ,'parent_id', 'key_code'
-    ];
+    protected $primaryKey = 'id';
+    protected $guarded = [];
 
     public function permissionChildren(){
         return $this->hasMany(Permission::class ,'parent_id');

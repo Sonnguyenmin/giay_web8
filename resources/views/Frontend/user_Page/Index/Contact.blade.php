@@ -7,7 +7,6 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="index.html"><i class="fa fa-home"></i> Trang Chủ</a>
-                    <a href="shop.html">shop</a>
                     <span>Liên hệ</span>
                 </div>
             </div>
@@ -110,3 +109,4 @@
 </section>
 {{-- Contact Section End  --}}
 @stop
+

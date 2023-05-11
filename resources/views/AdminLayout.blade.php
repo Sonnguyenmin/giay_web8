@@ -179,7 +179,9 @@
                     </div>
                     </div>
                     <ul class="profile-dropdown onhover-show-div">
-                    <li><a href=""><i data-feather="user"></i><span>{{ Auth::user()->name}}</span></a></li>
+                    <li>
+                        <a href=""><i data-feather="user"></i><span>{{ Auth::user()->name}}</span></a>
+                    </li>
                     <li><a href="email_inbox.html"><i data-feather="mail"></i><span>Hộp thư đến</span></a></li>
                     <li><a href="{{route('logout')}}"><i data-feather="log-in"> </i><span>Đăng xuất</span></a></li>
                     </ul>
