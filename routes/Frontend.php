@@ -49,7 +49,7 @@
         Route::get('update',[CartController::class, 'update']);
     });
 
-    Route::prefix('checkout')->group(function(){
+    Route::prefix('checkout')->middleware('CheckMemberLogin')->group(function(){
         Route::get('', [CheckoutController::class, 'index']);
         Route::post('', [CheckoutController::class, 'addOrder']);
         Route::get('/result', [CheckoutController::class, 'result']);

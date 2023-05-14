@@ -89,7 +89,7 @@
                         <div class="advanced-search">
                             <button type="button" class="category-btn">All Danh mục</button>
                             <div class="input-group">
-                                <form action="shop">
+                                <form action="shop" style="width: 90%">
                                     <input name="search" value="{{request('search')}}" type="text" placeholder="Tìm kiếm sản phẩm ">
                                     <button type="submit"> <i class="ti-search"></i></button>
                                 </form>

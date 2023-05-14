@@ -71,7 +71,7 @@
                 </div>
             </div>
         </form>
-        <a href="{{route('MyAccount.edit',$user->first()->id)}}">
+        <a href="{{route('MyAccount.edit',Auth::user()->id)}}">
             <button type="submit" class="site-btn login-btn">Cập nhật thông tin</button>
         </a>
     </div>

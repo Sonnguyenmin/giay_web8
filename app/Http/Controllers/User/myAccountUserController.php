@@ -15,6 +15,7 @@ use App\Models\PermissionRole;
 use App\Service\User\UserServiceInterface;
 use App\Service\Category\CategoryServiceInterface;
 use App\Service\Brand\BrandServiceInterface;
+use Illuminate\Support\Facades\Log;
 
 class myAccountUserController extends Controller
 {
@@ -39,7 +40,7 @@ class myAccountUserController extends Controller
     {
         $brands = $this->BrandService->all();
         $categories = $this->CategoryService->all();
-        $user = User::orderBy('id','DESC')->get();
+        $user = $this->UserService->all();
         return view('Frontend.user_Page.Customers.MyUser.myAccount', compact('brands','categories','user'));
     }
 

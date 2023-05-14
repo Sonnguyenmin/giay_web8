@@ -117,7 +117,7 @@ class ProductController extends Controller
                 foreach($request->image_path as $fileItem){
                         $dataProductImageDetail = $this->storageTraitUploadMutiple($fileItem, 'product');
                         $product->images()->create([
-                            'id_product' =>$product->id,
+                            'product_id' =>$product->id,
                             'image_path' => $dataProductImageDetail['file_path'],
                             'image_name' => $dataProductImageDetail['file_name'],
                         ]);
@@ -207,11 +207,11 @@ class ProductController extends Controller
             }
             //Insert data to product_image
             if($request->hasFile('image_path')){
-                $this->proImage->where('id_product', $id)->delete();
+                $this->proImage->where('product_id', $id)->delete();
                 foreach($request->image_path as $fileItem){
                         $dataProductImageDetail = $this->storageTraitUploadMutiple($fileItem, 'product');
                         $product->images()->create([
-                            'id_product' =>$product->id,
+                            'product_id' =>$product->id,
                             'image_path' => $dataProductImageDetail['file_path'],
                             'image_name' => $dataProductImageDetail['file_name'],
                         ]);

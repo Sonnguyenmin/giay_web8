@@ -225,7 +225,7 @@
                                         @foreach ($products->productComments as $productComment)
                                             <div class="co-item">
                                                 <div class="avatar-pic">
-                                                    <img src="{{ $productComment->user->avatar_image}}" alt="">
+                                                    <img src="{{config('app.baseUrl') . $productComment->user->avatar_path}}" alt="">
                                                 </div>
                                                 <div class="avatar-text">
                                                     <div class="at-rating">
