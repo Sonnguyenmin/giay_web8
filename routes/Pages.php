@@ -26,6 +26,9 @@
 |
 */
 //Các trang
+
+    Route::resource('/blogs', BlogController::class)->middleware('can:blog-list');
+
     Route::resource('/category', CategoryController::class)->middleware('can:category-list');
 
     Route::resource('/brand', BrandController::class)->middleware('can:brand-list');

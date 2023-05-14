@@ -30,7 +30,7 @@
                         </form>
                     </div>
                     <div class="blog-catagory">
-                        <h4>Categories</h4>
+                        <h4>Danh mục</h4>
                         <ul class="filter-catagories">
                             @foreach ($categories as $category)
                                 <li><a href="shop/category/{{$category->cate_name}}">{{$category->cate_name}}</a></li>
@@ -38,12 +38,12 @@
                         </ul>
                     </div>
                     <div class="recent-post">
-                        <h4>Recent Post</h4>
+                        <h4>Bài đăng gần đây</h4>
                         <div class="recent-blog">
                             @foreach ($blogs as $blog)
                                 <a href="" class="rb-item">
                                     <div class="rb-pic">
-                                        <img src="{{$blog->image}}" alt="">
+                                        <img src="{{config('app.baseUrl') . $blog->blog_path}}" alt="">
                                     </div>
                                     <div class="rb-text">
                                         <h6>{{$blog->title}}</h6>
@@ -61,7 +61,7 @@
                         <div class="clog-lg-6 col-sm-6">
                             <div class="blog-item">
                                 <div class="bi-pic">
-                                    <img src="{{$blog->image}}" alt="">
+                                    <img src="{{config('app.baseUrl') . $blog->blog_path}}" alt="">
                                 </div>
                                 <div class="bi-text">
                                     <a href="">

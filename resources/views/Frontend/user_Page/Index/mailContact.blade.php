@@ -47,9 +47,6 @@
                             <br>
                             <span>{{ $phone }}</span>
                         </div>
-                        {{-- <div class="col-6" style="flex: 0 0 50%; width: 50%; box-sizing: border-box;">
-                            <b>Ngày gửi:</b> {{ date('d/m/yy H:i', strtotime()) }}
-                        </div> --}}
                     </div>
                 </div>
             </div>

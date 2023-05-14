@@ -77,7 +77,6 @@
                                             @else
                                                 {{number_format($product->pro_price)}}đ
                                             @endif
-
                                         </div>
                                     </div>
                                 </div>

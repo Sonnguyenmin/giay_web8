@@ -6,7 +6,6 @@ use App\Service\Product\ProductServiceInterface;
 use App\Service\Category\CategoryServiceInterface;
 use App\Service\Brand\BrandServiceInterface;
 use App\Service\Blog\BlogServiceInterface;
-
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;

@@ -291,7 +291,7 @@
                 @foreach ($blogs as $blog)
                     <div class="col-lg-4 col-md-6" >
                         <div class="single-latest-blog">
-                            <img src="{{$blog->image}}" alt="">
+                            <img src="{{config('app.baseUrl') . $blog->blog_path}}" alt="">
                             <div class="latest-text">
                                 <div class="tag-list">
                                     <div class="tag-item">

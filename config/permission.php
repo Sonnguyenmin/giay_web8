@@ -2,6 +2,7 @@
 
     return [
         'access' => [
+            'list-blog' => 'blog_list',
             'list-category' => 'category_list',
             'list-brand' => 'brand_list',
             'list-menu' => 'menu_list',
@@ -17,6 +18,7 @@
             'list-productImage' => 'productImage_list'
         ],
         'table_module' => [
+            'blog',
             'category',
             'brand',
             'menu',
