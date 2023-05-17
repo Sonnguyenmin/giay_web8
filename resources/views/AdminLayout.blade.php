@@ -170,7 +170,12 @@
                 </li>
                 <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
                 <li class="profile-nav onhover-dropdown p-0 me-0">
-                    <div class="d-flex profile-media"><img class="b-r-50" src="{{asset('Backend/assets/images/dashboard/profile.png')}}" alt="">
+                    <div class="d-flex profile-media">
+                        @if(Auth::user()->avatar_path != null)
+                            <img class="b-r-50" style="border-radius: 50%" src="{{config('app.baseUrl') . Auth::user()->avatar_path}}" alt="">
+                        @else
+                            <img class="b-r-50" src="{{asset('Backend/assets/images/dashboard/profile.png')}}" alt="">
+                        @endif
                     <div class="flex-grow-1">
                         <span>
                             {{ Auth::user()->name}}

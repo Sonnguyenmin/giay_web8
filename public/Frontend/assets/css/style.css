@@ -1472,7 +1472,14 @@ ol {
 	font-weight: 700;
 	line-height: 30px;
 	margin-bottom: 16px;
+    height: 60px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
+
+
 
 .benefit-items {
 	border: 1px solid #ebebeb;
@@ -3269,6 +3276,11 @@ ol {
 	font-weight: 700;
 	line-height: 30px;
 	margin-bottom: 16px;
+    height: 60px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .blog-item .bi-text p {

@@ -52,7 +52,7 @@ class CartController extends Controller
                     'images'=>$products->feature_image,
                     'size' => $productSize,
                 ],
-                
+
             ]);
             $response['count']= Cart::count();
             $response['total']= Cart::total();
@@ -67,7 +67,6 @@ class CartController extends Controller
     public function delete(Request $request) {
         if($request->ajax()){
             $response['cart'] = Cart::remove($request->rowId);
-
             $response['count'] = Cart::count();
             $response['total'] = Cart::total();
             $response['subtotal'] = Cart::subtotal();

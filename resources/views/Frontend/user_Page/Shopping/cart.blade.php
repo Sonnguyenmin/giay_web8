@@ -72,7 +72,7 @@
                             <div class="proceed-checkout">
                                 <ul>
                                     <li class="subtotal">Tổng<span>{{$total}}đ</span></li>
-                                    <li class="cart-total">Thành tiền <span>{{$subtotal}}đ</span></li>
+                                    <li class="cart-total">Thành tiền<span>{{$subtotal}}đ</span></li>
                                 </ul>
                                 <a href="./checkout" class="proceed-btn">Tiến hành thanh toán</a>
                             </div>

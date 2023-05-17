@@ -38,14 +38,6 @@
     </div>
     </li>
     <li class="sidebar-list">
-        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="monitor"></i><span>Tin tức</span> </a>
-        <ul class="sidebar-submenu">
-            <li>
-                <a href=" {{route('blogs.index')}}">Tin tức</a>
-            </li>
-        </ul>
-    </li>
-    <li class="sidebar-list">
         <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="box"></i><span>Danh mục</span> </a>
         <ul class="sidebar-submenu">
             <li>
@@ -116,6 +108,14 @@
         <ul class="sidebar-submenu">
             <li>
                 <a href="{{route('slide.index')}}">Slides</a>
+            </li>
+        </ul>
+    </li>
+    <li class="sidebar-list">
+        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="monitor"></i><span>Tin tức</span> </a>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href=" {{route('blogs.index')}}">Tin tức</a>
             </li>
         </ul>
     </li>

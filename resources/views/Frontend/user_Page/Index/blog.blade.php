@@ -69,6 +69,7 @@
                                     </a>
                                     <p>{{$blog->category}} <span>-  {{date('M d, Y', strtotime($blog->created_at))}}</span></p>
                                 </div>
+                                <span>{{$blog->subtitle}}</span>
                             </div>
                         </div>
                     @endforeach

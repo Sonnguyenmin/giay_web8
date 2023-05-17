@@ -88,7 +88,6 @@
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
@@ -130,7 +129,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bd-menu">
                         <div class="inner">
-                            <h3>{{number_format($profit)}} đ</h3>
+                            <h3>{{number_format($profit)}}đ</h3>
                             <p>Doanh thu theo năm</p>
                         </div>
                         <div class="icon">

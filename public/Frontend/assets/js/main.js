@@ -288,7 +288,7 @@
 
 function addCart(productId){
     var productSize = $('.pd-size-choose .sc-item label.active').text();
-    console.log(291, productSize);
+    console.log(productSize);
     $.ajax({
         type: "GET",
         url: "cart/add",

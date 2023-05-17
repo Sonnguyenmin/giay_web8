@@ -48,7 +48,7 @@
                                         </h5>
                                     </td>
                                     <td class="total-price first-row">
-                                        {{$order->orderDetails->size}}
+                                        {{$order->orderDetails[0]->size}}
                                     </td>
                                     <td class="total-price first-row">
                                         {{number_format(array_sum(array_column($order->orderDetails->toArray(), 'total')))}}đ

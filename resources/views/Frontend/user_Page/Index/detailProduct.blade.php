@@ -59,7 +59,7 @@
                             </div>
                             <div class="pd-rating">
                                 @for($i = 1; $i <=5; $i++)
-                                    @if($i <= $products->avgRating)
+                                    @if($i<=$products->avgRating)
                                         <i class="fa fa-star"></i>
                                     @else
                                         <i class="fa fa-star-o"></i>

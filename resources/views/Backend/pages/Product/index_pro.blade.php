@@ -80,8 +80,8 @@
 
                             <td style="text-align: center">{{$proItem->qty}}</td>
                             <td style="text-align: center">{{$proItem->Sku}}</td>
-                             <td style="text-align: center;width: 120px;">
-                                @if($proItem->pro_gender == 0)
+                            <td style="text-align: center;width: 120px;">
+                                @if($proItem->pro_gender === 0 )
                                     <span style="font-size: 13px" class="badge badge-light-danger">Nam</span>
                                 @else
                                     <span style="font-size: 13px" class="badge badge-light-success">Nữ</span>
