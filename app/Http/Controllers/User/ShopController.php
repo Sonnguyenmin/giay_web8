@@ -16,6 +16,8 @@ use App\Models\Menu;
 use App\Models\ProImage;
 use App\Models\ProAttr;
 use App\Models\Attrbute;
+use App\Models\ProductComment;
+
 
 class ShopController extends Controller
 {
@@ -93,5 +95,11 @@ class ShopController extends Controller
         $products = $this->productService->getProByBrand($brandName, $request);
         $productCount = Product::count();
         return view('Frontend.user_Page.Index.shop', compact('products', 'categories', 'brands','productCount'));
+    }
+
+
+    public function postComment(Request $request) {
+        ProductComment::create($request->all());
+        return redirect()->back();
     }
 }

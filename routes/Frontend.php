@@ -40,6 +40,8 @@
     });
 
     Route::get('/product-details/{slug}/{id}',[ShopController::class,'show'])->name('details.product');
+    Route::post('/product-details/{slug}/{id}',[ShopController::class,'postComment'])->name('details.product');
+
 
     Route::prefix('cart')->group(function(){
         Route::get('add',[CartController::class, 'add'])->name('addCart');
