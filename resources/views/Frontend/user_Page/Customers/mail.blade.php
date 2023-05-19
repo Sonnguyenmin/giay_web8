@@ -189,7 +189,7 @@
                             cần thiết.</p>
 
                         <p>Bạn có thể tham khảo trang Trung tâm trợ giúp hoặc liên hệ với cửa hàng bằng cách để lại lời nhắn tại
-                            Trang liên hệ hoặc gửi thư tại đây. Hotline 1900 9999 (8:00 - 9:00 cả Thứ 7 và Chủ Nhật).</p>
+                            Trang liên hệ hoặc gửi thư tại đây. Hotline 0353090212 (8:00 - 9:00 cả Thứ 7 và Chủ Nhật).</p>
 
                         <b>CodeLean cảm ơn bạn.</b>
                     </div>

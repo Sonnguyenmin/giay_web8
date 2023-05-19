@@ -17,7 +17,10 @@
 <!-- My Order Details Section Begin -->
 <section class="checkout-section spad">
     <div class="container">
-        <form class="checkout-form">
+        <a href="{{route('MyAccount.edit',Auth::user()->id)}}">
+            <button type="submit" class="site-btn login-btn">Cập nhật thông tin</button>
+        </a>
+        <form class="checkout-form" style="padding-top: 20px">
             <div class="row">
                 <div class="col-lg-12">
                     <div  >
@@ -71,9 +74,7 @@
                 </div>
             </div>
         </form>
-        <a href="{{route('MyAccount.edit',Auth::user()->id)}}">
-            <button type="submit" class="site-btn login-btn">Cập nhật thông tin</button>
-        </a>
+
     </div>
 </section>
 <!-- My Order Details Section End -->

@@ -24,9 +24,9 @@
             <div class="row">
                 @if (Cart::count() > 0)
                     <div class="col-lg-6">
-                        {{-- <div class="checkout-content">
-                            <a href="/account/login" class="content-btn">Nhấn vào đây để đăng nhập</a>
-                        </div> --}}
+                        <div class="checkout-content">
+                            <a href="{{route('MyAccount.index')}}" class="content-btn">Thêm thông tin khách hàng tại đây</a>
+                        </div>
                         <h4>Chi tiết thanh toán</h4>
                         <div class="row">
                             <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id ?? ''}}">

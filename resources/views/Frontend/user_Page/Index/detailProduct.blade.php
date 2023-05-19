@@ -59,7 +59,7 @@
                             </div>
                             <div class="pd-rating">
                                 @for($i = 1; $i <=5; $i++)
-                                    @if($i<=$products->avgRating)
+                                    @if($i <=  $avgRating)
                                         <i class="fa fa-star"></i>
                                     @else
                                         <i class="fa fa-star-o"></i>
@@ -150,8 +150,8 @@
                                             </td>
                                             <td >
                                                 <div class="pd-rating">
-                                                    @for($i = 1; $i<=5; $i++)
-                                                        @if($i <= $products->avgRating)
+                                                    @for($i = 1; $i <=5; $i++)
+                                                        @if($i <= $avgRating)
                                                             <i class="fa fa-star"></i>
                                                         @else
                                                             <i class="fa fa-star-o"></i>
@@ -225,12 +225,12 @@
                                         @foreach ($products->productComments as $productComment)
                                             <div class="co-item">
                                                 <div class="avatar-pic">
-                                                    <img src="{{config('app.baseUrl') . $productComment->user->avatar_path}}" alt="">
+                                                    <img src="{{config('app.baseUrl') . $productComment->user->avatar_path }}" alt="">
                                                 </div>
                                                 <div class="avatar-text">
                                                     <div class="at-rating">
-                                                        @for($i = 1; $i <=5; $i++)
-                                                            @if($i <= $products->avgRating)
+                                                        @for($i = 1; $i <= 5; $i++)
+                                                            @if($i <= $avgRating)
                                                                 <i class="fa fa-star"></i>
                                                             @else
                                                                 <i class="fa fa-star-o"></i>
@@ -257,10 +257,10 @@
                                                     <input type="text" placeholder="Email" name="email" value="{{\Illuminate\Support\Facades\Auth::user()->email ?? null }}">
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <textarea placeholder="Messages" name="messages"></textarea>
+                                                    <textarea placeholder="Phản hồi khách hàng" name="messages"></textarea>
 
                                                     <div class="personal-rating">
-                                                        <h6>Your Rating</h6>
+                                                        <h6>Đánh giá của bạn</h6>
                                                         <div class="rate">
                                                             <input type="radio" id="star5" name="rating" value="5" />
                                                             <label for="star5" title="text">5 stars</label>

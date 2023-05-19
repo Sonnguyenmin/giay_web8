@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Service\Product\ProductServiceInterface;
+use App\Service\ProductComment\ProductCommentServiceInterface;
 use App\Service\Category\CategoryServiceInterface;
 use App\Service\Brand\BrandServiceInterface;
 use App\Models\Slide;
@@ -22,12 +23,15 @@ use App\Models\ProductComment;
 class ShopController extends Controller
 {
     private $productService;
+    private $ProductCommentService;
 
     public function __construct(ProductServiceInterface $productService,
+                                ProductCommentServiceInterface $ProductCommentService,
                                 CategoryServiceInterface $CategoryService,
                                 BrandServiceInterface $BrandService)
     {
         $this->productService = $productService;
+        $this->ProductCommentService = $ProductCommentService;
         $this->CategoryService = $CategoryService;
         $this->BrandService = $BrandService;
     }
@@ -66,9 +70,18 @@ class ShopController extends Controller
         $brands = $this->BrandService->all();
         $categories = $this->CategoryService->all();
         $products = $this->productService->find($productId);
+        $avgRating = 0;
+        $sumRating = array_sum(array_column($products->productComments->toArray(), 'rating'));
+        $countRating = count($products->productComments);
+        if ($countRating != 0)
+        {
+            $avgRating = $sumRating/$countRating;
+        }
+
         $relatedProducts = $this->productService->getRelatedProduct($products);
         $productCount = Product::count();
-        return view('Frontend.user_Page.Index.detailProduct', compact('products', 'relatedProducts','brands', 'categories','productCount'));
+
+        return view('Frontend.user_Page.Index.detailProduct', compact('products', 'relatedProducts','brands', 'categories','productCount', 'avgRating'));
     }
 
     public function index(Request $request){
@@ -99,7 +112,7 @@ class ShopController extends Controller
 
 
     public function postComment(Request $request) {
-        ProductComment::create($request->all());
+        $this->ProductCommentService->create($request->all());
         return redirect()->back();
     }
 }

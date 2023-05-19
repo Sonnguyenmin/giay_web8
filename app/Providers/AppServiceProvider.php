@@ -6,6 +6,12 @@ use App\Repositories\Product\ProductRepositoryInterface;
 use  App\Repositories\Product\ProductRepository;
 use  App\Service\Product\ProductServiceInterface;
 use  App\Service\Product\ProductService;
+
+use App\Repositories\ProductComment\ProductCommentRepositoryInterface;
+use  App\Repositories\ProductComment\ProductCommentRepository;
+use  App\Service\ProductComment\ProductCommentServiceInterface;
+use  App\Service\ProductComment\ProductCommentService;
+
 use App\Repositories\Category\CategoryRepositoryInterface;
 use  App\Repositories\Category\CategoryRepository;
 use  App\Service\Category\CategoryServiceInterface;
@@ -57,7 +63,16 @@ class AppServiceProvider extends ServiceProvider
             ProductServiceInterface::class,
             ProductService::class
         );
+        //ProductComment
+        $this->app->singleton(
+            ProductCommentRepositoryInterface::class,
+            ProductCommentRepository::class
+        );
 
+        $this->app->singleton(
+            ProductCommentServiceInterface::class,
+            ProductCommentService::class
+        );
          //Blog
          $this->app->singleton(
             BlogRepositoryInterface::class,
