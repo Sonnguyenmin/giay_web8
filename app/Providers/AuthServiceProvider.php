@@ -65,12 +65,21 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('order-list', function (User $user) {
             return $user->checkPermissionAccess(config('permission.access.list-order'));
         });
-
         Gate::define('proAttr-list', function (User $user) {
             return $user->checkPermissionAccess(config('permission.access.list-proAttr'));
+        });
+        Gate::define('statistical-list', function (User $user) {
+            return $user->checkPermissionAccess(config('permission.access.list-statistical'));
         });
         Gate::define('proComment-list', function (User $user) {
             return $user->checkPermissionAccess(config('permission.access.list-proComment'));
         });
     }
 }
+
+// DB_CONNECTION=mysql
+// DB_HOST= sql200.epizy.com
+// DB_PORT=3306
+// DB_DATABASE= epiz_34238184_nordaCsdl
+// DB_USERNAME= epiz_34238184
+// DB_PASSWORD= dnps9jkt

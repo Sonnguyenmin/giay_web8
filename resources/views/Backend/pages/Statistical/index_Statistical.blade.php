@@ -117,8 +117,8 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bd-blue">
                         <div class="inner">
-                            <h3>{{$slideCount}}</h3>
-                            <p>Slide</p>
+                            <h3>{{$slideCount}} + {{$blogCount}}</h3>
+                            <p>Slide + Tin tức</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>

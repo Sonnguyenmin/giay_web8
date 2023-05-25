@@ -116,7 +116,7 @@
         <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="message-circle"></i><span>Bình luận khách hàng</span> </a>
         <ul class="sidebar-submenu">
             <li>
-                <a href="{{route('proComment.index')}}">Bình luận khách hàng</a>
+                <a href="{{route('proComment.index')}}">Bình luận</a>
             </li>
         </ul>
     </li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\User;
@@ -18,7 +19,7 @@ session_start();
 
 class StatisticalController extends Controller
 {
-
+    protected $blog;
     protected $category;
     protected $brand;
     protected $product;
@@ -30,6 +31,7 @@ class StatisticalController extends Controller
     protected $orderDetails;
 
     public function __construct(Category $category,
+                                Blog $blog,
                                 Brand $brand,
                                 Product $product,
                                 User $user,
@@ -40,6 +42,7 @@ class StatisticalController extends Controller
                                 OrderDetails $orderDetails)
     {
         $this->user = $user;
+        $this->blog = $blog;
         $this->category = $category;
         $this->brand = $brand;
         $this->product = $product;
@@ -57,6 +60,7 @@ class StatisticalController extends Controller
     public function index()
     {
         $userCount = $this->user->count();
+        $blogCount = $this->blog->count();
         $categoryCount  = $this->category->count();
         $brandCount = $this->brand->count();
         $productCount = $this->product->count();
@@ -80,7 +84,7 @@ class StatisticalController extends Controller
         $totalPayment = OrderDetails::join('tbl_order', 'tbl_order.id', '=', 'tbl_orderdetails.order_id')->where('tbl_order.status', 4)->sum('total');
 
         return view('Backend.pages.Statistical.index_Statistical',
-        compact('userCount','categoryCount','brandCount','productCount', 'settingCount', 'menuCount', 'slideCount', 'orderCount', 'orderDetailsCount', 'orders', 'subTotal', 'orderPayment','totalPayment','profit'));
+        compact('userCount','blogCount','categoryCount','brandCount','productCount', 'settingCount', 'menuCount', 'slideCount', 'orderCount', 'orderDetailsCount', 'orders', 'subTotal', 'orderPayment','totalPayment','profit'));
     }
 
     /**
