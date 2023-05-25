@@ -48,7 +48,7 @@
                              style="margin-bottom: 25px; flex: 0 0 50%; width: 50%; box-sizing: border-box;">
                             <b>{{$order->order_name}}</b>
                             <br>
-                             <b>{{ $order->first_name . ', ' . $order->last_name }}</b>
+                             <b>{{ $order->first_name . ' ' . $order->last_name }}</b>
                             <br>
                             <span>
                                 <a style="color: white !important;" href="mailto:{{ $order->email }}" target="_blank">{{ $order->email }}</a>

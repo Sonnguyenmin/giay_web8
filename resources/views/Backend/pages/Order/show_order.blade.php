@@ -35,9 +35,9 @@
 
                         <th>Hình ảnh</th>
                         <th>Tên sản phẩm</th>
+                        <th>Kích thước</th>
                         <th>Số lượng</th>
                         <th>Đơn giá</th>
-                        <th>Tổng tiền</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -50,13 +50,13 @@
                                     {{$orderDetail->product->pro_name}}
                                 </td>
                                 <td style="text-align: center">
+                                    {{$orderDetail->size}}
+                                </td>
+                                <td style="text-align: center">
                                     {{$orderDetail->qty}}
                                 </td>
                                 <td style="text-align: center">
                                     {{number_format($orderDetail->amount)}}đ
-                                </td>
-                                <td style="text-align: center">
-                                    {{number_format($orderDetail->total)}}đ
                                 </td>
                             </tr>
                         @endforeach

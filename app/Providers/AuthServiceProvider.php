@@ -31,7 +31,9 @@ class AuthServiceProvider extends ServiceProvider
             return $user->checkPermissionAccess(config('permission.access.list-blog'));
         });
 
-        Gate::define('category-list', 'App\Policies\Categorypolicy@view');
+        Gate::define('category-list', function (User $user) {
+            return $user->checkPermissionAccess(config('permission.access.list-category'));
+        });
 
         Gate::define('menu-list', function (User $user) {
             return $user->checkPermissionAccess(config('permission.access.list-menu'));
@@ -64,11 +66,11 @@ class AuthServiceProvider extends ServiceProvider
             return $user->checkPermissionAccess(config('permission.access.list-order'));
         });
 
-        Gate::define('statistical-list', function (User $user) {
-            return $user->checkPermissionAccess(config('permission.access.list-statistical'));
+        Gate::define('proAttr-list', function (User $user) {
+            return $user->checkPermissionAccess(config('permission.access.list-proAttr'));
         });
-        Gate::define('productImage-list', function (User $user) {
-            return $user->checkPermissionAccess(config('permission.access.list-productImage'));
+        Gate::define('proComment-list', function (User $user) {
+            return $user->checkPermissionAccess(config('permission.access.list-proComment'));
         });
     }
 }

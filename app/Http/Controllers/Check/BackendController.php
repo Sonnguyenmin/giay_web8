@@ -38,8 +38,8 @@ class BackendController extends Controller
             // Nếu dữ liệu hợp lệ sẽ kiểm tra trong csdl
             $email = $request->input('email');
             $password = $request->input('password');
-
-            if( Auth::attempt(['email' => $email, 'password' =>$password])) {
+            $remember = $request->remember;
+            if( Auth::attempt(['email' => $email, 'password' =>$password], $remember)) {
                 // Kiểm tra đúng email và mật khẩu sẽ chuyển trang
                 return redirect()->route('admin');
             } else {

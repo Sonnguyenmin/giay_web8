@@ -14,7 +14,8 @@
     use App\Http\Controllers\admin\ProductImageController;
     use App\Http\Controllers\admin\myAccountController;
     use App\Http\Controllers\admin\BlogController;
-
+    use App\Http\Controllers\admin\ProAttrController;
+    use App\Http\Controllers\admin\ProCommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,5 +56,8 @@
 
     Route::resource('/ProductImage', ProductImageController::class)->middleware('can:productImage-list');
 
+    Route::resource('/proAttr', ProAttrController::class)->middleware('can:proAttr-list');
+
+    Route::resource('/proComment', ProCommentController::class)->middleware('can:proComment-list');
 
 ?>

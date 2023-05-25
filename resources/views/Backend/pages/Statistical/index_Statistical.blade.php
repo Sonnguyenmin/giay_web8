@@ -159,9 +159,6 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header border-0" style="display:flex; align-item: center" >
-                            <h3 style="margin-right: 6px" class="card-title">Đơn hàng tiền mặt</h3> - <h3 style="margin-left: 6px; color: #0dcaf0" class="card-title">Doanh thu : {{number_format($subTotal)}} đ</h3>
-                        </div>
                         <div class="card-body">
                             <form action="" method="GET" class="form-inline">
                                 <div class="form-group" style="margin-right: 10px">
@@ -172,6 +169,9 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Tìm kiếm</button>
                             </form>
+                        </div>
+                        <div class="card-header border-0" style="display:flex; align-item: center" >
+                            <h3 style="margin-right: 6px" class="card-title">Đơn hàng tiền mặt</h3> - <h3 style="margin-left: 6px; color: #0dcaf0" class="card-title">Doanh thu : {{number_format($subTotal)}} đ</h3>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped table-valign-middle">
@@ -198,8 +198,16 @@
                                             <td>{{$order->phone}}</td>
                                             <td >
                                                 @foreach ($order->orderDetails as $orderDetail)
-                                                    <span>- {{$orderDetail->product->pro_name}} + size:{{$orderDetail->size}}</br></span>
+                                                    <span>- {{$orderDetail->product->pro_name}}
+                                                        @if($orderDetail->qty > 1)
+                                                           x {{$orderDetail->qty}}
+                                                        @else
+
+                                                        @endif
+                                                        + size:{{$orderDetail->size}}</br></span>
+                                                    <br/>
                                                 @endforeach
+
                                             </td>
                                             <td>{{$order->payment_type}}</td>
                                             <td>{{$order->created_at}}</td>
@@ -214,17 +222,6 @@
                     <div class="card">
                         <div class="card-header border-0" style="display:flex; align-item: center" >
                             <h3 style="margin-right: 6px" class="card-title">Đơn hàng thanh toán trực tuyến</h3> - <h3 style="margin-left: 6px; color: #00e49f" class="card-title">Doanh thu : {{number_format($totalPayment)}} đ</h3>
-                        </div>
-                        <div class="card-body">
-                            <form action="" method="GET" class="form-inline">
-                                <div class="form-group" style="margin-right: 10px">
-                                    <input type="date" name="date_from" class="form-control" >
-                                </div>
-                                <div class="form-group" style="margin-right: 10px">
-                                    <input type="date" name="date_to" class="form-control" >
-                                </div>
-                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-                            </form>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped table-valign-middle">
@@ -251,7 +248,14 @@
                                             <td>{{$order->phone}}</td>
                                             <td >
                                                 @foreach ($order->orderDetails as $orderDetail)
-                                                    <span>- {{$orderDetail->product->pro_name}} + size:{{$orderDetail->size}}</br></span>
+                                                    <span>- {{$orderDetail->product->pro_name}}
+                                                        @if($orderDetail->qty > 1)
+                                                            x {{$orderDetail->qty}}
+                                                        @else
+
+                                                        @endif
+                                                        + size:{{$orderDetail->size}}</br></span>
+                                                    <br/>
                                                 @endforeach
                                             </td>
                                             <td>{{$order->payment_type}}</td>
@@ -281,29 +285,3 @@
 <script src="{{asset('Backend/assets/dist/js/demo.js')}}"></script>
 
 <script src="{{asset('Backend/assets/dist/js/pages/dashboard3.js')}}"></script>
-{{-- <script nonce="f5bdeeb8-da73-47b7-9e4a-5aae9122bb1f">
-(function(w,d)
-    {!function(bv,bw,bx,by){bv[bx]=bv[bx]||{};
-        bv[bx].executed=[];
-        bv.zaraz={deferred:[],listeners:[]};bv.zaraz.q=[];
-        bv.zaraz._f=function(bz){return function(){var bA=Array.prototype.slice.call(arguments);
-        bv.zaraz.q.push({m:bz,a:bA})}};
-        for(const bB of["track","set","debug"])bv.zaraz[bB]=bv.zaraz._f(bB);
-        bv.zaraz.init=()=>{var bC=bw.getElementsByTagName(by)[0],bD=bw.createElement(by),bE=bw.getElementsByTagName("title")[0];
-        bE&&(bv[bx].t=bw.getElementsByTagName("title")[0].text);
-        bv[bx].x=Math.random();bv[bx].w=bv.screen.width;bv[bx].h=bv.screen.height;
-        bv[bx].j=bv.innerHeight;
-        bv[bx].e=bv.innerWidth;
-        bv[bx].l=bv.location.href;
-        bv[bx].r=bw.referrer;
-        bv[bx].k=bv.screen.colorDepth;
-        bv[bx].n=bw.characterSet;
-        bv[bx].o=(new Date).getTimezoneOffset();
-        if(bv.dataLayer)for(const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ,bK)=>({...bJ[1],...bK[1]})))))zaraz.set(bI[0],bI[1],{scope:"page"});
-        bv[bx].q=[];for(;bv.zaraz.q.length;){const bL=bv.zaraz.q.shift();
-        bv[bx].q.push(bL)}bD.defer=!0;for(const bM of[localStorage,sessionStorage])Object.keys(bM||{}).filter((bO=>bO.startsWith("_zaraz_"))).forEach((bN=>{try{bv[bx]["z_"+bN.slice(7)]=JSON.parse(bM.getItem(bN))}catch{bv[bx]["z_"+bN.slice(7)]=bM.getItem(bN)}}));
-        bD.referrerPolicy="origin";
-        bD.src="../../cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(bv[bx])));
-        bC.parentNode.insertBefore(bD,bC)};["complete","interactive"].includes(bw.readyState)?zaraz.init():bv.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);
-    </script>
---}}

@@ -18,7 +18,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function getRelatedProduct($product, $limit = 4)
     {
-        return $this->model->where('category_id', $product->category_id)
+        return $this->model->where('brand_id', $product->brand_id)->inRandomOrder()
         ->limit($limit)
         ->where('tag' , $product->tag)
         ->get();

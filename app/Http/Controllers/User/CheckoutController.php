@@ -70,14 +70,10 @@ class CheckoutController extends Controller
             //Gửi email
             $total = Cart::total();
             $subtotal = Cart::subtotal();
-            
             $this->sendEmail($order, $total, $subtotal);
-
             //03. Xóa giỏ hàng
             Cart::destroy();
-
             //04.Trả về kết quả thông báo
-
             return redirect('checkout/result')->with('notification', 'THÀNH CÔNG ! Bạn sẽ trả tiền khi nhận được hàng. Vui lòng kiểm tra email của bạn');
         }
 
@@ -111,10 +107,8 @@ class CheckoutController extends Controller
                 $total = Cart::total();
                 $subtotal = Cart::subtotal();
                 $this->sendEmail($order, $total, $subtotal);
-
                 //Xóa giỏ hàng
                 Cart::destroy();
-
                 //Thông báo kết quả
                 return redirect('checkout/result')->with('notification', 'THÀNH CÔNG ! Bạn đã thanh toán trực tuyến. Vui lòng kiểm tra email của bạn');
             } else { //Nếu không thành công

@@ -4,13 +4,13 @@
     <div class="page-title">
         <div class="row">
             <div class="col-6">
-                <h3>Liệt kê chi tiết ảnh sản phẩm</h3>
+                <h3>Liệt kê chi tiết thuộc tính sản phẩm</h3>
             </div>
             <div class="col-6">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('admin')}}"><i data-feather="home"></i></a></li>
-                    <li class="breadcrumb-item">Ảnh sản phẩm</li>
-                    <li class="breadcrumb-item active">Liệt kê chi tiết ảnh sản phẩm</li>
+                    <li class="breadcrumb-item">Chi tiết Thuộc tính sản phẩm</li>
+                    <li class="breadcrumb-item active">Liệt kê chi tiết thuộc tính sản phẩm</li>
                 </ol>
             </div>
         </div>
@@ -22,7 +22,7 @@
       <div class="col-sm-12">
         <div class="card">
             <div class="card-header pb-0" style="display:flex; justify-content: space-between;">
-                <h3>Ảnh sản phẩm</h3>
+                <h3>Chi tiết Thuộc tính sản phẩm</h3>
                 <span style=" margin-top: 3px;">
                     @include('Backend.admin.alert')
               </span>
@@ -33,11 +33,9 @@
                 <table class="display" id="basic-1">
                     <thead>
                     <tr style="text-align: center">
-                        <th>STT</th>
-                        <th>ID</th>
-                        <th>Đường dẫn hình ảnh</th>
-                        <th>ProductName</th>
-                        <th>Hình ảnh</th>
+                        <th style="width: 20px">STT</th>
+                        <th>Id sản phẩm</th>
+                        <th>Id thuộc tính</th>
                         <th>Thời gian</th>
                     </tr>
                     </thead>
@@ -45,16 +43,12 @@
                         @php
                             $stt = 1
                         @endphp
-                     @foreach ($proImage as $key => $proImg)
-                        <tr >
-                            <td style="text-align: center">{{ $stt++ }}</td>
-                            <td style="text-align: center">{{$proImg->id }}</td>
-                            <td style="text-align: center">{{$proImg->image_path}}</td>
-                            <td style="text-align: center">{{ $proImg->image_name}}</td>
-                            <td style="text-align: center">
-                                <img src="{{$proImg->image_path}}" alt="" style="width: 100px; height: 100px; border-radius: 6px">
-                            </td>
-                            <td style="text-align: center">{{$proImg->created_at->format(" d-m-Y")}}</td>
+                     @foreach ($proAttrs as $key => $proAttr)
+                        <tr>
+                            <td style="text-align: center ; width: 20px">{{ $stt++ }}</td>
+                            <td style="text-align: center">{{ $proAttr->id_product}}</td>
+                            <td style="text-align: center">{{ $proAttr->id_attr}}</td>
+                            <td style="text-align: center">{{ $proAttr->created_at->format(" d-m-Y")}}</td>
                         </tr>
                      @endforeach
                     </tbody>
@@ -65,10 +59,5 @@
       </div>
     </div>
 </div>
-
-
-
-
-
-     <!-- Zero Configuration  Ends-->
+      <!-- Zero Configuration  Ends-->
 @endsection

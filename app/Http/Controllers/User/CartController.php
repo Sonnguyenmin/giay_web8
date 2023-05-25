@@ -56,8 +56,6 @@ class CartController extends Controller
             ]);
             $response['count']= Cart::count();
             $response['total']= Cart::total();
-
-
             return $response;
 
         }

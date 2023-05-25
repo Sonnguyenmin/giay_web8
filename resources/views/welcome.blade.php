@@ -55,10 +55,10 @@
                 </div>
                 <div class="ht-right">
                     @if (Auth::check())
-                    <a href="./account/logout" class="login-panel">
-                        <i class="fa fa-user"></i>
-                        {{Auth::user()->name}} - Đăng xuất
-                    </a>
+                        <a href="./account/logout" class="login-panel">
+                            <i class="fa fa-user"></i>
+                            {{Auth::user()->name}} - Đăng xuất
+                        </a>
                     @else
                         <a href="./account/login" class="login-panel">
                             <i class="fa fa-user"></i>
@@ -211,7 +211,7 @@
                 <div class="col-lg-4">
                     <div class="footer-left">
                         <div class="footer-logo">
-                            <a href="index.html">
+                            <a href="">
                                 <img src="{{asset('Frontend/assets/logo-3.png')}}" height="25" alt="">
                             </a>
                         </div>

@@ -62,6 +62,14 @@
         </ul>
     </li>
     <li class="sidebar-list">
+        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book"></i><span>Chi tiết TT Sản phẩm</span> </a>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href="{{route('proAttr.index')}}">Chi tiết TT thuộc tính</a>
+            </li>
+        </ul>
+    </li>
+    <li class="sidebar-list">
         <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="menu"></i><span>Menus</span> </a>
         <ul class="sidebar-submenu">
             <li>
@@ -77,8 +85,9 @@
             </li>
         </ul>
     </li>
+
     <li class="sidebar-list">
-        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="shopping-bag"></i><span>Ảnh Sản phẩm</span> </a>
+        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="image"></i><span>Ảnh Sản phẩm</span> </a>
         <ul class="sidebar-submenu">
             <li>
                 <a href="{{route('ProductImage.index')}}">Ảnh sản phẩm</a>
@@ -104,7 +113,15 @@
         </div>
     </li>
     <li class="sidebar-list">
-        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="tv"></i><span>Slides</span> </a>
+        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="message-circle"></i><span>Bình luận khách hàng</span> </a>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href="{{route('proComment.index')}}">Bình luận khách hàng</a>
+            </li>
+        </ul>
+    </li>
+    <li class="sidebar-list">
+        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="video"></i><span>Slides</span> </a>
         <ul class="sidebar-submenu">
             <li>
                 <a href="{{route('slide.index')}}">Slides</a>

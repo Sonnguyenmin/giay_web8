@@ -25,7 +25,9 @@
                     <div >
                         <h4>Thông tin khách hàng</h4>
                         <div style="display: flex; align-items: center; position: relative;">
-                            <input style="height: 20px; width: 20px; background-color: transparent; position: absolute; top: -8px" type="file" name="avatar_path">
+                            <input style="height: 20px; width: 20px; background-color: transparent; position: absolute; top: -8px; height: 71px;
+                            width: 66px;
+                            border-radius: 50%;" type="file" name="avatar_path">
                             <img src="{{config('app.baseUrl'). $user->avatar_path}}" style="height: 60px; width: 60px; border-radius: 50% ;" alt="">
                             <h5 style="margin-left: 10px">{{Auth::user()->name ?? ''}}</h5>
                         </div>

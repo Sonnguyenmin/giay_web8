@@ -27,47 +27,47 @@
                         <h4>Thông tin khách hàng</h4>
                         <div style="display: flex; align-items: center; position: relative;">
                             <img src="{{config('app.baseUrl') . Auth::user()->avatar_path}}" style="height: 60px; width: 60px; border-radius: 50% ;" alt="">
-                            <h5 style="margin-left: 10px">{{Auth::user()->name ?? ''}}</h5>
+                            <h5 style="margin-left: 10px">{{Auth::user()->name ?? 'Chưa có thông tin'}}</h5>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="fir">Tên  <span>*</span></label>
-                            <input type="text" name="first_name" id="fir" value="{{Auth::user()->first_name ?? ''}}">
+                            <input type="text" name="first_name" id="fir" value="{{Auth::user()->first_name ?? 'Chưa có thông tin'}}">
                         </div>
                         <div class="col-lg-6">
                             <label for="last">Họ <span>*</span></label>
-                            <input type="text" name="last_name" id="last" value="{{Auth::user()->last_name ?? ''}}">
+                            <input type="text" name="last_name" id="last" value="{{Auth::user()->last_name ?? 'Chưa có thông tin'}}">
                         </div>
                         <div class="col-lg-12">
                             <label for="con-name">Tên công ty </label>
-                            <input type="text" name="company_name" id="con-name" value="{{Auth::user()->company_name ?? ''}}">
+                            <input type="text" name="company_name" id="con-name" value="{{Auth::user()->company_name ?? 'Chưa có thông tin'}}">
                         </div>
                         <div class="col-lg-12">
                             <label for="coun">Quốc gia <span>*</span></label>
-                            <input type="text" name="country" id="coun" value="{{Auth::user()->country ?? ''}}">
+                            <input type="text" name="country" id="coun" value="{{Auth::user()->country ?? 'Chưa có thông tin'}}">
                         </div>
                         <div class="col-lg-12">
                             <label for="street">Tỉnh / Thành phố <span>*</span></label>
-                            <input type="text" name="street_address" id="street" class="street-first" value="{{Auth::user()->street_address ?? ''}}">
+                            <input type="text" name="street_address" id="street" class="street-first" value="{{Auth::user()->street_address ?? 'Chưa có thông tin'}}">
 
                         </div>
                         <div class="col-lg-12">
                             <label for="zip">Mã bưu điện / ZIP (tùy chọn)</label>
-                            <input type="text" id="zip" name="zip" value="{{Auth::user()->zip ?? ''}}">
+                            <input type="text" id="zip" name="zip" value="{{Auth::user()->zip ?? 'Chưa có thông tin'}}">
                         </div>
                         <div class="col-lg-12">
                             <label for="town">Địa chỉ cụ thể</label>
-                            <input type="text" id="town" name="town" value="{{Auth::user()->town ?? ''}}">
+                            <input type="text" id="town" name="town" value="{{Auth::user()->town ?? 'Chưa có thông tin'}}">
                         </div>
                         <div class="col-lg-12">
                             <label for="email">Địa chỉ email <span>*</span></label>
-                            <input type="text" id="email" name="email" value="{{Auth::user()->email ?? ''}}">
+                            <input type="text" id="email" name="email" value="{{Auth::user()->email ?? 'Chưa có thông tin'}}">
                         </div>
                         <div class="col-lg-12">
                             <label for="phone">Số điện thoại <span>*</span></label>
-                            <input type="text" id="phone" name="phone" value="{{Auth::user()->phone ?? ''}}">
+                            <input type="text" id="phone" name="phone" value="{{Auth::user()->phone ?? 'Chưa có thông tin'}}">
                         </div>
                     </div>
 

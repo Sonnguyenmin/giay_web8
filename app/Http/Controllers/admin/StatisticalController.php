@@ -66,20 +66,18 @@ class StatisticalController extends Controller
         $orderCount = $this->order->count();
         $profit = $this->orderDetails->sum('total');
         $orderDetailsCount = $this->orderDetails->count();
+
         $orders = Order::where('status', 1)->get();
+
         $subTotal = OrderDetails::join('tbl_order', 'tbl_order.id', '=', 'tbl_orderdetails.order_id')->where('tbl_order.status', 1)->sum('total');
 
         if(request()->date_from && request()->date_to){
             $orders = Order::where('status', 1)->whereBetween('created_at',[request()->date_from, request()->date_to])->get();
         };
 
-
         $orderPayment = Order::where('status', 4)->get();
 
         $totalPayment = OrderDetails::join('tbl_order', 'tbl_order.id', '=', 'tbl_orderdetails.order_id')->where('tbl_order.status', 4)->sum('total');
-        if(request()->date_from && request()->date_to){
-            $orderPayment = Order::where('status', 4)->whereBetween('created_at',[request()->date_from, request()->date_to])->get();
-        };
 
         return view('Backend.pages.Statistical.index_Statistical',
         compact('userCount','categoryCount','brandCount','productCount', 'settingCount', 'menuCount', 'slideCount', 'orderCount', 'orderDetailsCount', 'orders', 'subTotal', 'orderPayment','totalPayment','profit'));

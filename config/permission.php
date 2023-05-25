@@ -15,7 +15,11 @@
             'list-permission' => 'permission_list',
             'list-order' => 'order_list',
             'list-statistical' => 'statistical_list',
-            'list-productImage' => 'productImage_list'
+            'list-productImage' => 'productImage_list',
+            'list-proAttr' => 'proAttr_list',
+            'list-proComment' => 'proComment_list'
+
+
         ],
         'table_module' => [
             'blog',
@@ -32,6 +36,8 @@
             'order',
             'statistical',
             'productImage',
+            'proComment',
+            'proAttr'
         ],
         'module_inner' => [
             'list',
