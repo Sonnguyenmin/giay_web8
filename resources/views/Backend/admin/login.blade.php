@@ -58,7 +58,7 @@
                     <div class="form-group">
 
                         <label class="col-form-label">Nhập địa chỉ email của bạn</label>
-                        <input class="form-control" type="text" name="email" placeholder="Tài khoản"  value="{{ old('email') }}" autofocus >
+                        <input class="form-control" type="text" name="email" placeholder="Tài khoản"   >
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Mật khẩu của bạn</label>

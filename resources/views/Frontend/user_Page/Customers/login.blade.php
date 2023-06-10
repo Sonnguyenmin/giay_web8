@@ -32,7 +32,7 @@
                         @csrf
                         <div class="group-input">
                             <label for="email">Địa chỉ email</label>
-                            <input type="text" id="email" name="email" placeholder="Nhập địa chị email">
+                            <input type="text" id="email" name="email" placeholder="Nhập địa chị email" >
                         </div>
                         <div class="group-input">
                             <label for="password">Mật khẩu *</label>

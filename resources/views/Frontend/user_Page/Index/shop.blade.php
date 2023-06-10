@@ -16,7 +16,7 @@
 <!-- Breacrumb Section End -->
 
 <!-- Product Shop Section Begin -->
-<div class="product-shop spad">
+<div class="product-shop spad"> 
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 product-sidebar-filter">

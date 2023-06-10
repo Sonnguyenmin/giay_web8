@@ -1,3 +1,4 @@
+<form action="shop">
     <div class="filter-widget">
         <h4 class="fw-title">Danh mục</h4>
         <ul class="filter-catagories">
@@ -13,12 +14,11 @@
                 <div class="bc-item">
                     <label for="bc-{{$brand->id}}">
                         {{$brand->brand_name}}
-                        <input
-                        type="checkbox"
+                        <input type="checkbox"
                         {{(request("brand")[$brand->id] ?? '') == "on" ? 'checked' : ''}}
                         id="bc-{{$brand->id}}"
                         name="brand[{{$brand->id}}]"
-                        onchange ="this.form.submit()">
+                        onchange = "this.form.submit();">
                         <span class="checkmark"></span>
                     </label>
                 </div>

@@ -24,11 +24,11 @@
                     <div class="cart-table">
                         <table>
                             <thead>
-                                <tr>
+                                <tr >
                                     <th>Hình ảnh</th>
-                                    <th class="p-name">Tên sản phẩm</th>
+                                    <th class="p-name" style="text-align: center">Tên sản phẩm</th>
                                     <th>Giá</th>
-                                    <th>Size</th>
+                                    <th>Kích thước</th>
                                     <th>Số lượng</th>
                                     <th>Tổng tiền</th>
                                     <th>
@@ -44,11 +44,11 @@
                                         <td class="cart-pic first-row">
                                             <img class="cart_img" src="{{config('app.baseUrl') . $cart->options->images}}" alt="">
                                         </td>
-                                        <td class="cart-title first-row">
+                                        <td class="cart-title first-row" style="min-width: 200px; text-align: center">
                                             <h5 >{{$cart->name}}</h5>
                                         </td>
                                         <td class="p-price first-row">{{number_format($cart->price)}}đ</td>
-                                        <td class="p-price first-row"> {{$cart->options->size}} </td>
+                                        <td class="p-price first-row">Size: {{$cart->options->size}} </td>
                                         <td class="qua-col first-row">
                                             <div class="quantity">
                                                 <div class="pro-qty">

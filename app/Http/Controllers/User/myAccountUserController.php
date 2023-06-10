@@ -59,9 +59,7 @@ class myAccountUserController extends Controller
         $brands = $this->BrandService->all();
         $categories = $this->CategoryService->all();
         return view('Frontend.user_Page.Customers.MyUser.PostMyAccount', compact('brands','categories','roles', 'user','roleOfUser'));
-    }
-
-
+    } 
     /**
      * Update the specified resource in storage.
      *
@@ -73,7 +71,7 @@ class myAccountUserController extends Controller
     {
         try {
             DB::beginTransaction();
-            $dataUpdateUser =[
+            $dataUpdateUser = [
                 'name' => $request->name,
                 'email' => $request->email,
                 'first_name' => $request->first_name,

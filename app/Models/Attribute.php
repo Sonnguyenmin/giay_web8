@@ -14,6 +14,6 @@ class Attribute extends Model
     protected $guarded = [];
 
     public function proAttrs(){
-        return $this->hasMany(proAttr::class,'id_product');
+        return $this->hasMany(proAttr::class, 'id_product');
     }
 }

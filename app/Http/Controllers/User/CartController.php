@@ -37,7 +37,6 @@ class CartController extends Controller
     }
 
     public function add(Request $request){
-
         if($request->ajax()) {
             $productSize = $request->productSize;
             $products = $this->productService->find($request->productId);
@@ -52,12 +51,10 @@ class CartController extends Controller
                     'images'=>$products->feature_image,
                     'size' => $productSize,
                 ],
-
             ]);
             $response['count']= Cart::count();
             $response['total']= Cart::total();
             return $response;
-
         }
         return back();
     }
@@ -74,7 +71,6 @@ class CartController extends Controller
     }
     public function destroy() {
         Cart::destroy();
-
     }
 
     public function update(Request $request) {

@@ -24564,6 +24564,7 @@ footer {
   top: 57px;
   left: -12px;
   padding: 0 10px;
+  min-width: 206px;
 }
 .page-wrapper .page-header .header-wrapper .nav-right .profile-dropdown li {
   padding: 10px !important;

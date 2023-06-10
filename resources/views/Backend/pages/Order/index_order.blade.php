@@ -56,7 +56,7 @@
                                     <br>
                                    <b style="font-size: 13px; font-weight: 500; color: #fe6060">
                                     @if(count($order->orderDetails) > 1)
-                                        (và {{count($order->orderDetails)}} sản phẩm khác)
+                                        (và {{count($order->orderDetails) - 1}} sản phẩm khác)
                                     @endif
                                    </b>
                                 </td>

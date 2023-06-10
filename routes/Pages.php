@@ -29,35 +29,19 @@
 //Các trang
 
     Route::resource('/blogs', BlogController::class)->middleware('can:blog-list');
-
     Route::resource('/category', CategoryController::class)->middleware('can:category-list');
-
     Route::resource('/brand', BrandController::class)->middleware('can:brand-list');
-
     Route::resource('/menu', MenuController::class)->middleware('can:menu-list');
-
     Route::resource('/attribute', AttributeController::class)->middleware('can:attribute-list');
-
     Route::resource('/product', ProductController::class)->middleware('can:product-list');
-
     Route::resource('/slide', SlideController::class)->middleware('can:slide-list');
-
     Route::resource('/setting', SettingController::class)->middleware('can:setting-list');
-
     Route::resource('/users', AdminUserController::class)->middleware('can:user-list');
-
     Route::resource('/roles', AdminRoleController::class)->middleware('can:role-list');
-
     Route::resource('/permission', PermissionController::class)->middleware('can:permission-list');
-
     Route::resource('/order', OrderController::class)->middleware('can:order-list');
-
     Route::resource('/Statistical', StatisticalController::class)->middleware('can:statistical-list');
-
     Route::resource('/ProductImage', ProductImageController::class)->middleware('can:productImage-list');
-
     Route::resource('/proAttr', ProAttrController::class)->middleware('can:proAttr-list');
-
     Route::resource('/proComment', ProCommentController::class)->middleware('can:proComment-list');
-
 ?>

@@ -16,16 +16,16 @@
 */
     Route::get('/Trang-quản-trị',[AdminController::class,'admin'])->name('admin');
 
-    // Đăng nhập và xử lý đăng nhập 
-    Route::get('/Đăng-nhập',[BackendController::class,'login'])->name('login');
-
-    Route::post('/Đăng-nhập',[BackendController::class,'post_login']);
-
+    // Đăng nhập và xử lý đăng nhập
+    Route::prefix('/Đăng-nhập')->group(function(){
+        Route::get('',[BackendController::class,'login'])->name('login');
+        Route::post('',[BackendController::class,'post_login']);
+    });
     // Đăng ký thành viên
-    Route::get('/Đăng-ký',[BackendController::class,'register'])->name('register');
-
-    Route::post('/Đăng-ký',[BackendController::class,'post_register']);
-
+    Route::prefix('/Đăng-ký')->group(function(){
+        Route::get('',[BackendController::class,'register'])->name('register');
+        Route::post('',[BackendController::class,'post_register']);
+    });
     // Đăng xuất
     Route::get('/Đăng-xuất',[LogoutController::class,'logout'])->name('logout');
 ?>
